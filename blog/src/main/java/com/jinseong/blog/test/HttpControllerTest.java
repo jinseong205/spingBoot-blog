@@ -30,8 +30,6 @@ public class HttpControllerTest {
 	public String getTest(User m) { 
 		//?id=1&username=jinseong&password=123&email=jinseong205@gmail.com - Mapping>> MessageConveter(SpringBoot)
 		//@requestParam
-
-		
 		return "get 요청 : " + m.getId() + ", " + m.getUsername() + "," + m.getPassword() + "," + m.getEmail();
 	}
 	@PostMapping("http/post") //text/plain, application/json

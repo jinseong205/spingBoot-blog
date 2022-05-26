@@ -32,7 +32,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // project에 연결된 db의 넘버링 전략을 따라간다.
 	private int id;	//sequnce //auto_increment
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 30, unique = true)
 	private String username;	//user_id
 
 	@Column(nullable = false, length = 100) // hash (비밀번호 암호화)

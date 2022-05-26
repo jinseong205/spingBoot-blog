@@ -5,10 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,17 @@ public class DummyControllerTest {
 	@Autowired // 의존성 주입(DI) >> 메모리 할당
 	private MemberRepository memberRpository;
 
+	// http://localhost:8000/blog/dummy/member/{id}
+	@DeleteMapping("/dummy/member/{id}")
+	public String deleteMember(@PathVariable int id) {
+		try{
+			memberRpository.deleteById(id);
+		}catch(EmptyResultDataAccessException e){
+			return "삭제에 실패하였습니다. 해당 id는 존재하지 않습니다";
+		}
+		return "삭제 되었습니다 id : " + id;
+	}
+	
 	// save > id 정보 없으면 insert, id 정보 있으면 update
 	// email,password
 	// http://localhost:8000/blog/dummy/member/{id}
@@ -47,7 +60,7 @@ public class DummyControllerTest {
 		//memberRpository.save(reqMember);
 		
 		//dirty Checking
-		return null;
+		return member;
 	}
 	
 	// http://localhost:8000/blog/dummy/memberAll

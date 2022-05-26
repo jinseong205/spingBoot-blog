@@ -2,6 +2,8 @@ package com.jinseong.blog.test;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +12,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jinseong.blog.model.Member;
@@ -23,9 +27,26 @@ public class DummyControllerTest {
 	@Autowired // 의존성 주입(DI) >> 메모리 할당
 	private MemberRepository memberRpository;
 
-	//email,password
-	@PostMapping("/dummy/member/{id}")
-	public Member updateMember() {
+	// save > id 정보 없으면 insert, id 정보 있으면 update
+	// email,password
+	// http://localhost:8000/blog/dummy/member/{id}
+	@Transactional
+	@PutMapping("/dummy/member/{id}")
+	public Member updateMember(@PathVariable int id, @RequestBody Member reqMember) {//json Data -> Java Obejct
+		System.out.println(id);
+		System.out.println(reqMember.getPassword());
+		System.out.println(reqMember.getEmail());
+		
+		Member member = memberRpository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("수정에 실패하였습니다");
+		});
+		
+		member.setPassword(reqMember.getPassword());
+		member.setEmail(reqMember.getEmail());
+	
+		//memberRpository.save(reqMember);
+		
+		//dirty Checking
 		return null;
 	}
 	

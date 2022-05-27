@@ -11,6 +11,10 @@
 		<div class="form-group">
 			<label for="pwd">Password</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
 		</div>
+		<div class="form-group form-check">
+			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> Remember me
+			</label>
+		</div>
 		<button type="submit" class="btn btn-primary">완료</button>
 	</form>
 </div>

@@ -14,15 +14,12 @@
 		<div class="form-group">
 			<label for="email">Email</label> <input type="email" class="form-control" placeholder="Enter email" id="email">
 		</div>
-		<div class="form-group form-check">
-			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> Remember me
-			</label>
-		</div>
-
-		<button type="submit" class="btn btn-primary">로그인</button>
 	</form>
+	
+	<button id="btn-save" class="btn btn-primary">로그인</button>
 </div>
 
+<script src="/blog/js/member.js"></script>
 <%@include file="../layout/footer.jsp"%>
 
 

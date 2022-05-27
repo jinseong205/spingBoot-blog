@@ -1,9 +1,0 @@
-/**
- * 
- */
- 
-let index = {
-	init: function(){
-		
-	}	
-}

@@ -8,21 +8,22 @@ let index = {
 
 	save:function(){
 		let data = {
-			id: $("#id").val(),
+			username: $("#id").val(),
 			password: $("#password").val(),
 			email: $("#email").val()
-		};
-		//console.log(data);
+		}
+		console.log(data);
 		
 		//ajax 통신을 이용해서 parameter를 json으로 변경하여 request
-		$ajax({
+		$.ajax({
 			type:"POST",
-			url: "/api/member",
+			url: "/blog/api/member",
 			data: JSON.stringify(data), //http body data
 			contentType:"application/json; charset=utf-8", //request body dataType
 			dataType:"json" //response dataType
 		}).done(function(res){
 			alert("회원가입이 완료되었습니다.");
+			console.log(res);
 			location.href="/blog";
 		}).fail(function(err){
 			alert(JSON.stringify(err))

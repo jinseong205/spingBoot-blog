@@ -16,7 +16,7 @@
 		</div>
 	</form>
 	
-	<button id="btn-save" class="btn btn-primary">로그인</button>
+	<button id="btn-save" class="btn btn-primary">회원가입</button>
 </div>
 
 <script src="/blog/js/member.js"></script>

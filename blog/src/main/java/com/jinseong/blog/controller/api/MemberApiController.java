@@ -32,9 +32,11 @@ public class MemberApiController {
 		int result = memberService.memberInsert(member);
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
 	}
+
 	
+	/*
 	@PostMapping("/api/member/login")
-	public ResponseDto<Integer> login(@RequestBody Member member) {
+	public ResponseDto<Integer> login(@RequestBody Member member, HttpSession session) {
 		System.out.println("login 호출됨");
 		
 		//DB에 insert를 하고 return
@@ -46,5 +48,6 @@ public class MemberApiController {
 		}
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
+	*/
 
 }

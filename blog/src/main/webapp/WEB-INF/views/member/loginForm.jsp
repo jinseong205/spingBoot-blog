@@ -20,7 +20,7 @@
 
 </div>
 
-<script src="/blog/js/member.js"></script>
+<script src="/js/member.js"></script>
 <%@include file="../layout/footer.jsp"%>
 
 

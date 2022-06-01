@@ -29,7 +29,7 @@ public class DummyControllerTest {
 	@Autowired // 의존성 주입(DI) >> 메모리 할당
 	private MemberRepository memberRpository;
 
-	// http://localhost:8000/blog/dummy/member/{id}
+	// http://localhost:8000/dummy/member/{id}
 	@DeleteMapping("/dummy/member/{id}")
 	public String deleteMember(@PathVariable int id) {
 		try{
@@ -42,7 +42,7 @@ public class DummyControllerTest {
 	
 	// save > id 정보 없으면 insert, id 정보 있으면 update
 	// email,password
-	// http://localhost:8000/blog/dummy/member/{id}
+	// http://localhost:8000/dummy/member/{id}
 	@Transactional
 	@PutMapping("/dummy/member/{id}")
 	public Member updateMember(@PathVariable int id, @RequestBody Member reqMember) {//json Data -> Java Obejct
@@ -63,14 +63,14 @@ public class DummyControllerTest {
 		return member;
 	}
 	
-	// http://localhost:8000/blog/dummy/memberAll
+	// http://localhost:8000/dummy/memberAll
 	@GetMapping("/dummy/memberAll")
 	public List<Member> list(){
 		return memberRpository.findAll();
 	}
 	
-	// http://localhost:8000/blog/dummy/members?page=0
-	// http://localhost:8000/blog/dummy/members?page=1
+	// http://localhost:8000/dummy/members?page=0
+	// http://localhost:8000/dummy/members?page=1
 	@GetMapping("/dummy/members")
 	public List<Member> pageList(@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable){
 		Page<Member> pagingMembers = memberRpository.findAll(pageable);
@@ -79,12 +79,12 @@ public class DummyControllerTest {
 		return members;
 	}
 	
-	// http://localhost:8000/blog/dummy/member/3
+	// http://localhost:8000/dummy/member/3
 	// {id} 주소로 param을 전달 받을 수 있음
 	@GetMapping("/dummy/member/{id}")
 	public Member Detail(@PathVariable int id) {
 		/*
-		 * http://localhost:8000/blog/dummy/member/4 을 찾으면 db에서 못찾아오게 되면 member는 null
+		 * http://localhost:8000/dummy/member/4 을 찾으면 db에서 못찾아오게 되면 member는 null
 		 * Optional로 member 객체를 가져와서 null 판단 .orElseThrow() 으로 exception 발생
 		 */
 
@@ -109,7 +109,7 @@ public class DummyControllerTest {
 		return member;
 	}
 
-	// http://localhost:8000/blog/dummy/join(요청)
+	// http://localhost:8000/dummy/join(요청)
 	// http 의 body에 username, password, email 데이터를 가지고 요청
 	@PostMapping("/dummy/join")
 	public String join(Member m) {

@@ -29,8 +29,8 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/writeForm">Write</a></li>
-						<li class="nav-item"><a class="nav-link" href="/memberForm">Info</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/form">Write</a></li>
+						<li class="nav-item"><a class="nav-link" href="/member/form">Info</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</ul>
 				</c:otherwise>

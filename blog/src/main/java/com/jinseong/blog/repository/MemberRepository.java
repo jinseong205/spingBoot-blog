@@ -12,9 +12,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer>{
 
 	//JPA Naming Query
 	//SELECT * FROM member WHERE username = ?1 password =?2;
-	Member findByUsernameAndPassword(String username, String password);
+	//Member findByUsernameAndPassword(String username, String password);
 	
-	@Query(value= "SELECT * FROM member WHERE username = ?1 password =?2", nativeQuery = true)
-	Member login(String username, String password);
+	//@Query(value= "SELECT * FROM member WHERE username = ?1 password =?2", nativeQuery = true)
+	//Member login(String username, String password);
 	
 }

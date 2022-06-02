@@ -23,7 +23,7 @@ public class MemberApiController {
 	private MemberService memberService;
 	
 	
-	@PostMapping("/api/member")
+	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody Member member) {
 		System.out.println("save 호출됨");
 		

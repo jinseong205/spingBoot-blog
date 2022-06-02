@@ -4,23 +4,23 @@
 
 <div class="container">
 
-	<form>
+	<form action="#" method="post">
 		<div class="form-group">
-			<label for="username">ID</label> <input type="text" class="form-control" placeholder="Enter ID" id="id">
+			<label for="id">ID</label> <input type="text" name="id" class="form-control" placeholder="Enter ID" id="id">
 		</div>
 		<div class="form-group">
-			<label for="pwd">Password</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			<label for="pwd">Password</label> <input type="password" name = "password"class="form-control" placeholder="Enter password" id="password">
 		</div>
 		<div class="form-group form-check">
-			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> Remember me
+			<label class="form-check-label"> <input name="remember" class="form-check-input" type="checkbox"> Remember me
 			</label>
 		</div>
+		<button id="btn-login" class="btn btn-primary">로그인</button>
 	</form>
-	<button id="btn-login" class="btn btn-primary">로그인</button>
+	
 
 </div>
 
-<script src="/js/member.js"></script>
 <%@include file="../layout/footer.jsp"%>
 
 

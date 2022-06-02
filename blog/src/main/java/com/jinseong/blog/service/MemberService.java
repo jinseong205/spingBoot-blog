@@ -24,9 +24,12 @@ public class MemberService {
 		}
 		return -1;
 	}
+	
+	/*
 	//select 할 때 트랜잭션 시작. 서비스 종료시에 트랜잭션 종료
 	@Transactional(readOnly=true) 
 	public Member login(Member member) {
 		return memberRepository.findByUsernameAndPassword(member.getUsername(), member.getPassword());
 	}
+	*/
 }

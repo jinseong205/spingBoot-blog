@@ -4,9 +4,11 @@ let index = {
 		$("#btn-save").on("click", () => { // this 바인딩
 			this.save();
 		});
+		/*
 		$("#btn-login").on("click", () => { // this 바인딩
 			this.login();
 		});
+		*/
 	},
 
 	save: function() {
@@ -20,7 +22,7 @@ let index = {
 		//ajax 통신을 이용해서 parameter를 json으로 변경하여 request
 		$.ajax({
 			type: "POST",
-			url: "/api/member",
+			url: "auth/joinProc",		//"/api/member",
 			data: JSON.stringify(data), //http body data
 			contentType: "application/json; charset=utf-8", //request body dataType
 			dataType: "json" //response dataType
@@ -32,7 +34,7 @@ let index = {
 			alert(JSON.stringify(err))
 		});
 	},
-
+	/*
 	login: function() {
 		let data = {
 			username: $("#id").val(),
@@ -55,6 +57,7 @@ let index = {
 			alert(JSON.stringify(err))
 		});
 	}
+	*/
 }
 
 index.init();

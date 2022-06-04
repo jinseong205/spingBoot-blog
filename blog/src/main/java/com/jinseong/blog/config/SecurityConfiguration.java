@@ -29,7 +29,9 @@ public class SecurityConfiguration {
 		  	.authenticated()
 		  .and()
 		  	.formLogin()
-		  	.loginPage("/auth/loginForm");
+		  	.loginPage("/auth/loginForm")
+			.loginProcessingUrl("/auth/loginProc")
+			.defaultSuccessUrl("/");
         return http.build();
     }
 }

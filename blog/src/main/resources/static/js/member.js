@@ -22,7 +22,7 @@ let index = {
 		//ajax 통신을 이용해서 parameter를 json으로 변경하여 request
 		$.ajax({
 			type: "POST",
-			url: "auth/joinProc",		//"/api/member",
+			url: "/auth/joinProc",		//"/api/member",
 			data: JSON.stringify(data), //http body data
 			contentType: "application/json; charset=utf-8", //request body dataType
 			dataType: "json" //response dataType

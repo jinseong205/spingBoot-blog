@@ -1,7 +1,5 @@
 package com.jinseong.blog.service;
 
-
-import org.apache.tomcat.util.buf.B2CConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,7 @@ public class MemberService {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
 	
 	@Transactional
 	public int memberInsert(Member member) {

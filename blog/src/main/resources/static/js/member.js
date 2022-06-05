@@ -13,7 +13,7 @@ let index = {
 
 	save: function() {
 		let data = {
-			username: $("#id").val(),
+			username: $("#username").val(),
 			password: $("#password").val(),
 			email: $("#email").val()
 		}
@@ -37,7 +37,7 @@ let index = {
 	/*
 	login: function() {
 		let data = {
-			username: $("#id").val(),
+			username: $("#username").val(),
 			password: $("#password").val()
 		}
 		console.log(data);

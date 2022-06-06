@@ -13,6 +13,10 @@ import com.jinseong.blog.model.Member;
 public class PrincipalDetail implements UserDetails{
 	private Member member; //컴포지션
 	
+	public PrincipalDetail(Member member) {
+		this.member = member;
+	}
+	
 	@Override
 	public String getPassword() {
 		return member.getPassword();

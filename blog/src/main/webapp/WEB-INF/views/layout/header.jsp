@@ -30,21 +30,21 @@
 			<c:choose>
 				<c:when test="${empty principal}">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">Board</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/boardList">게시판</a></li>
 					</ul>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/auth/loginForm">Login</a></li>
-						<li class="nav-item"><a class="nav-link" href="/auth/joinForm">Join</a></li>
+						<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">Board</a></li>
-						<li class="nav-item"><a class="nav-link" href="/board/saveForm">Write</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/boardList">게신판</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/saveForm">작성</a></li>
 					</ul>
 					<ul class="navbar-nav">	
-						<li class="nav-item"><a class="nav-link" href="/member/updateform">My Info</a></li>
-						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="/member/updateform">내 정보</a></li>
+						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.jinseong.blog.service.BoardService;
 
@@ -20,13 +21,20 @@ public class BoardController {
 	//@AuthenticationPrincipal PrincipalDetail principal
 
 	@GetMapping({"/board/boardList","/board/boardList"})
-	public String index(@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable, Model model) {
+	public String board(@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable, Model model) {
 		model.addAttribute("boards", boardService.findBoardAll(pageable));
 		return "board/boardList";	//viewResolver 작동!
 	}
 
+	//USER 권한이 필요
+	@GetMapping("/board/boardDetail/{id}")
+	public String boardDetail(@PathVariable int id, Model model) {
+		
+		model.addAttribute("board", boardService.boardDetail(id));
+		
+		return "board/boardDetail";
+	}
 	
-
 	
 	//USER 권한이 필요
 	@GetMapping("/board/saveForm")

@@ -27,5 +27,14 @@ public class BoardService {
 		return boardRepository.findAll(pageable);
 	}
 
+	public Board boardDetail(int id) {
+		return boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("해당 글을 찾을수 었습니다.");
+				});
+	}
+
+
+
 
 }

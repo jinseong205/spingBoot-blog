@@ -9,51 +9,25 @@ let index = {
 
 	save: function() {
 		let data = {
-			username: $("#username").val(),
-			password: $("#password").val(),
-			email: $("#email").val()
+			title: $("#title").val(),
+			content: $("#content").val(),
 		}
 		console.log(data);
 
-		//ajax 통신을 이용해서 parameter를 json으로 변경하여 request
 		$.ajax({
 			type: "POST",
-			url: "/auth/joinProc",		//"/api/member",
-			data: JSON.stringify(data), //http body data
-			contentType: "application/json; charset=utf-8", //request body dataType
+			url: "/api/board",
+			data: JSON.stringify(data), 
+			contentType: "application/json; charset=utf-8", 
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("회원가입이 완료되었습니다.");
-			console.log(res);
-			location.href = "/";
+			alert("글 작성이 완료되었습니다.");
+			location.href = "/board";
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
 	},
-	/*
-	login: function() {
-		let data = {
-			username: $("#username").val(),
-			password: $("#password").val()
-		}
-		console.log(data);
-
-		//ajax 통신을 이용해서 parameter를 json으로 변경하여 request
-		$.ajax({
-			type: "POST",
-			url: "/api/member/login",
-			data: JSON.stringify(data), //http body data
-			contentType: "application/json; charset=utf-8", //request body dataType
-			dataType: "json" //response dataType
-		}).done(function(res) {
-			alert("로그인이 완료되었습니다.");
-			console.log(res);
-			location.href = "/";
-		}).fail(function(err) {
-			alert(JSON.stringify(err))
-		});
-	}
-	*/
+	
 }
 
 index.init();

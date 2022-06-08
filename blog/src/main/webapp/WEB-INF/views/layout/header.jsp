@@ -26,9 +26,12 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<div class="collapse navbar-collapse navbar-ex1-collapse" id="collapsibleNavbar">
 			<c:choose>
 				<c:when test="${empty principal}">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="/board/boardList">Board</a></li>
+					</ul>
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/auth/loginForm">Login</a></li>
 						<li class="nav-item"><a class="nav-link" href="/auth/joinForm">Join</a></li>
@@ -36,8 +39,11 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="/board/boardList">Board</a></li>
 						<li class="nav-item"><a class="nav-link" href="/board/saveForm">Write</a></li>
-						<li class="nav-item"><a class="nav-link" href="/member/updateform">Info</a></li>
+					</ul>
+					<ul class="navbar-nav">	
+						<li class="nav-item"><a class="nav-link" href="/member/updateform">My Info</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 					</ul>
 				</c:otherwise>

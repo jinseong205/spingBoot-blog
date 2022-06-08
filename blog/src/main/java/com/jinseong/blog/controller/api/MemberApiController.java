@@ -2,7 +2,6 @@ package com.jinseong.blog.controller.api;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.buf.B2CConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jinseong.blog.dto.ResponseDto;
 import com.jinseong.blog.model.Member;
-import com.jinseong.blog.model.RoleType;
 import com.jinseong.blog.service.MemberService;
 
 @RestController

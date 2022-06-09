@@ -20,7 +20,6 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 		<a class="navbar-brand" href="/">Jinseong</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -39,8 +38,10 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">게신판</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/boardList">게시판</a></li>
+						<!-- 
 						<li class="nav-item"><a class="nav-link" href="/board/saveForm">작성</a></li>
+						 -->
 					</ul>
 					<ul class="navbar-nav">	
 						<li class="nav-item"><a class="nav-link" href="/member/updateform">내 정보</a></li>

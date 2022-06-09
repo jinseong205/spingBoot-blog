@@ -3,8 +3,15 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
+	<c:choose>
+		<c:when test="${not empty principal}">
+			<div class="d-flex flex-column"> 
+			<button class="btn btn-secondary align-self-end" onclick="location.href='/board/saveForm'">글 작성</button>
+			</div>
+		</c:when>
+	</c:choose>
+	
 	<c:forEach var="board" items='${boards.content}'>
-
 		<div class="card m-2">
 			<div class="card-body">
 				<h4 class="card-title">${board.title}</h4>

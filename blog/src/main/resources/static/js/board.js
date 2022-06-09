@@ -11,7 +11,6 @@ let index = {
 		$("#btn-update").on("click", () => { // this 바인딩
 			this.update();
 		});
-
 	},
 
 	save: function() {
@@ -37,6 +36,7 @@ let index = {
 
 	deleteById: function() {
 		let id = $("#id").text();
+		
 		$.ajax({
 			type: "DELETE",
 			url: "/api/board/" + id,
@@ -44,31 +44,32 @@ let index = {
 			contentType: "application/json; charset=utf-8"
 		}).done(function(res) {
 			alert("삭제가 완료되었습니다.");
-			location.href = "/board/boardList";
+			location.href = "/board/boardList/";
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
 	},
 
 	update: function() {
+		let id= $("#id").val();
+		
 		let data = {
 			title: $("#title").val(),
 			content: $("#content").val(),
 		}
-
 		$.ajax({
-			type: "POST",
-			url: "/api/board",
+			type: "PUT",
+			url: "/api/board/" + id,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("글 작성이 완료되었습니다.");
-			location.href = "/board/boardList";
+			alert("글 수정이 완료되었습니다.");
+			location.href = "/board/boardList/";
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
-	},
+	}
 
 
 }

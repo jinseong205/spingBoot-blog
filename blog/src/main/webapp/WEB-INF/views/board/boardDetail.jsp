@@ -4,7 +4,11 @@
 
 <div class="container">
 
-
+	<div>
+		글번호: <span id="id">${board.id}</span>
+		작성자: <span><i>${board.member.username} </i></span>
+	</div>
+	<br/>	
 	<div>
 		<h3>${board.title}</h3>
 	</div>
@@ -14,8 +18,10 @@
 	</div>
 	<hr/>
 	<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
-	<button id="btn-update" class="btn btn-secondary">수정</button>
+	<c:if test="${board.member.id == principal.member.id}">
+	<a href ="/board/updateForm/${board.id}" class="btn btn-secondary">수정</a>
 	<button id="btn-delete" class="btn btn-secondary">삭제</button>
+	</c:if>
 </div>
 
 

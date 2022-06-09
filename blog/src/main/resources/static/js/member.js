@@ -29,7 +29,7 @@ let index = {
 		}).done(function(res) {
 			alert("회원가입이 완료되었습니다.");
 			console.log(res);
-			location.href = "/";
+			location.href = "/auth/loginForm";
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});

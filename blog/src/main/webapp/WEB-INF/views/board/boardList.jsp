@@ -6,7 +6,7 @@
 	<c:choose>
 		<c:when test="${not empty principal}">
 			<div class="d-flex flex-column"> 
-			<button class="btn btn-secondary align-self-end" onclick="location.href='/board/saveForm'">글 작성</button>
+			<a href="/board/saveForm" class="btn btn-secondary align-self-end">글 작성</a>
 			</div>
 		</c:when>
 	</c:choose>

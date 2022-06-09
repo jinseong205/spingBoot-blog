@@ -20,18 +20,26 @@ public class BoardService {
 	@Transactional
 	public void saveBoard (Board board, Member member) {	//title, content
 		board.setCount(0);
+		board.setMember(member);
 		boardRepository.save(board);
 	}
 
+	@Transactional(readOnly=true)
 	public Page<Board> findBoardAll(Pageable pageable) {
 		return boardRepository.findAll(pageable);
 	}
 
+	@Transactional(readOnly=true)
 	public Board boardDetail(int id) {
 		return boardRepository.findById(id)
 				.orElseThrow(()->{
 					return new IllegalArgumentException("해당 글을 찾을수 었습니다.");
 				});
+	}
+
+	@Transactional
+	public void deleteBoard(int id) {
+		boardRepository.deleteById(id);				
 	}
 
 

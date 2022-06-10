@@ -38,7 +38,7 @@ public class Member {
 	@Column(nullable = false, length = 100) // hash (비밀번호 암호화)
 	private String password;	//user_pw
 	
-	@Column(nullable = false, length = 50) 
+	@Column( length = 50) 
 	private String email;		
 	
 	//@ColumnDefault("'user'")

@@ -4,10 +4,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jinseong.blog.auth.PrincipalDetail;
 import com.jinseong.blog.dto.ResponseDto;
 import com.jinseong.blog.model.Member;
 import com.jinseong.blog.service.MemberService;
@@ -21,14 +29,24 @@ public class MemberApiController {
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody Member member) {
-		System.out.println("save 호출됨");
 		int result = memberService.memberInsert(member);
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
 	}
-
+	
+	@PutMapping("/member")
+	public ResponseDto<Integer> update(@RequestBody Member member, @AuthenticationPrincipal PrincipalDetail principal, HttpSession session){	//requestBody 없으면 key=value, x-www-form-unlencoded
+		memberService.update(member);
+		
+		//세션 등록
+		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(member.getUsername(), member.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+	}
 	
 	/*
 	@PostMapping("/api/member/login")

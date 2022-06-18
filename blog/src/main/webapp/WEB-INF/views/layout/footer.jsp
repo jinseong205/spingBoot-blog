@@ -3,7 +3,7 @@
 
 
 <br />
-<div class="jumbotron text-center" style="margin-bottom: 0">
+<div class="jumbotron text-center" style="margin-bottom: 0; padding: 0 0 0 0]">
 	<p>Create By Jinseong</p>
 	<p>📞010-3589-0199</p>
 	<p>📧jinoseng205@gmail.com</p>

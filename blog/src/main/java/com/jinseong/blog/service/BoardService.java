@@ -55,7 +55,4 @@ public class BoardService {
 		//이때 더티 체킹 - 자동 업데이트가 됨. db flush
 	}
 
-
-
-
 }

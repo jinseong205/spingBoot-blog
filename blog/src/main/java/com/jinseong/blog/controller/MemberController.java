@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jinseong.blog.auth.PrincipalDetail;
+import com.jinseong.blog.model.OAuthToken;
 
 
 //인증이 안된 사용자들이 출입 할 수 있는 경로를 /auth/** 허용
@@ -59,7 +62,19 @@ public class MemberController {
 				,String.class
 			);
 		
-		return "카카오 인증 완료 : " + response;
+		//Gson, Json Simple, ObejctMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        OAuthToken oAuthToken = null;
+        try {
+        	oAuthToken = objectMapper.readValue(response.getBody().toString(),OAuthToken.class);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        System.out.println("---" + oAuthToken.getAccess_token());
+		
+		return "카카오 인증 완료 : " + oAuthToken.getAccess_token();
 	}
 	
 	

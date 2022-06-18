@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jinseong.blog.auth.PrincipalDetail;
+import com.jinseong.blog.model.KakaoProfile;
 import com.jinseong.blog.model.OAuthToken;
 
 
@@ -37,6 +38,8 @@ public class MemberController {
 	@GetMapping("/auth/kakao/callback")
 	public @ResponseBody String kakaoLoginCallback(String code) { //Data를 리턴해주는 컨트롤러 함수
 		
+		/*kakao token req*/
+		
 		//POST방식으로 key=value 데이터를 요청 (to 카카오)
 		RestTemplate rt = new RestTemplate();
 		
@@ -58,8 +61,8 @@ public class MemberController {
 		ResponseEntity response = rt.exchange(
 				"https://kauth.kakao.com/oauth/token", 
 				HttpMethod.POST, 
-				kakaoTokenReq
-				,String.class
+				kakaoTokenReq,
+				String.class
 			);
 		
 		//Gson, Json Simple, ObejctMapper
@@ -72,9 +75,39 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-        System.out.println("---" + oAuthToken.getAccess_token());
 		
-		return "카카오 인증 완료 : " + oAuthToken.getAccess_token();
+		/*kakao profile req*/
+        
+		RestTemplate rt2 = new RestTemplate();
+		
+		//Headers
+		HttpHeaders headers2 = new HttpHeaders();
+		headers2.add("Authorization","Bearer " + oAuthToken.getAccess_token());
+		headers2.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+
+		//Hedaer
+		HttpEntity<MultiValueMap<String, String>> kakaoProfileReq2 = new HttpEntity<>(headers2);
+		
+		//Http 요청하기 - Post방식 response 변수의 응답을 받음
+		ResponseEntity response2 = rt2.exchange(
+				"https://kapi.kakao.com/v2/user/me", 
+				HttpMethod.POST, 
+				kakaoProfileReq2,
+				String.class
+			);
+		
+		//Gson, Json Simple, ObejctMapper
+        ObjectMapper objectMapper2 = new ObjectMapper();
+        KakaoProfile kakaoProfile = null;
+        try {
+        	kakaoProfile = objectMapper.readValue(response2.getBody().toString(),KakaoProfile.class);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        
+		return "카카오 인증 완료 : " + response2.getBody();
 	}
 	
 	

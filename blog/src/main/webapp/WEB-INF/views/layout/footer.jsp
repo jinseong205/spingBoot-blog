@@ -3,13 +3,13 @@
 
 
 <br />
-<div class="jumbotron text-center" style="margin-bottom: 0; padding: 0 0 0 0]">
-	<p>Create By Jinseong</p>
-	<p>📞010-3589-0199</p>
-	<p>📧jinoseng205@gmail.com</p>
+<div class="bg-light text-center container-fluid navbar-fixed-bottom" style="margin-bottom: 0; padding: 0 0 0 0]">
+	<br/>
+	<pre>
+	Create By Jinseong
+	📞010-3589-0199
+	📧jinoseng205@gmail.com
+	</pre>
 </div>
-
-
-
 </body>
 </html>

@@ -99,6 +99,9 @@ public class MemberController {
 		//Gson, Json Simple, ObejctMapper
         ObjectMapper objectMapper2 = new ObjectMapper();
         KakaoProfile kakaoProfile = null;
+        
+        System.out.println(response2.getBody());
+        
         try {
         	kakaoProfile = objectMapper.readValue(response2.getBody().toString(),KakaoProfile.class);
 		} catch (JsonProcessingException e) {

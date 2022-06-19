@@ -1,0 +1,42 @@
+--카카오 로그인 API
+
+웹서버주소 : http://localhost:8000
+클라이언트키 : 5e74706108bffe6ea2bef14ddb178495
+카카오 로그인 요청 콜백 주소 : http://localhost:8000/auth/kakao/callback
+카카오 로그아웃요청 콜백 주소 : http://localhost:000/auth/kakao/logout
+
+로그인 요청 주소 (GET)
+https://kauth.kakao.com/oauth/authorize?client_id=5e74706108bffe6ea2bef14ddb178495&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code
+
+응답 받은 코드
+http://localhost:8000/auth/kakao/callback?code=aQdyghK6z5A8r4YoolFllWdRAnjqGsU706--ONT6yI5F1zfguIg6wQz6q2wfTsx_emvOXQo9dGgAAAGBdxdW7g
+
+토큰 발급 요청 주소 (POST)
+https://kauth.kakao.com/oauth/authorize?client_id=5e74706108bffe6ea2bef14ddb178495&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code
+
+[header] 
+content-type : application/x-www-form-urlencoded;charset=utf-8 (key=value)
+body
+grant_type=authoriztion_code
+client_id=5e74706108bffe6ea2bef14ddb178495
+redirect_uri=http://localhost:8000/auth/kakao/callback
+code={code}
+
+토큰을 통한 사용자 정보 조회 (GET, POST)
+https://kapi.kakao.com/v2/user/me 
+
+[header]
+Authorization : Bearrer {access_token}
+content-type : application/x-www-form-urlencoded;charset=utf-8
+
+
+
+--github api
+
+--jenkins
+
+--smart contract
+
+--web game
+
+-- riot api

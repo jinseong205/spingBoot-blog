@@ -5,8 +5,13 @@
 	<div class="container">
 		<div class="card m-2">
 			<div class="card-body">
-				<h4 class="card-title">메인페이지</h4>
-				<a href="#" class="btn btn-primary">상세보기</a>
+				<a class="nav-link" href="https://github.com/jinseong205">github.com/jinseong205</a>
+				<br>
+				<ul class="navbar-nav">
+				<img class="img-fluid" src="https://ghchart.rshah.org/666666/jinseong205" />
+				
+				<div class = "d-flex justify-content-center">
+				</div>
 			</div>
 		</div>
 	</div>

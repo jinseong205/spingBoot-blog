@@ -106,6 +106,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+        System.out.println(kakaoProfile.getId() + kakaoProfile.getKakaoAccount().getEmail());
         
 		return "카카오 인증 완료 : " + response2.getBody();
 	}

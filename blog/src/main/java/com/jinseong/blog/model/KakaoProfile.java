@@ -11,14 +11,14 @@ public class KakaoProfile {
 	public KakaoAccount kakaoAccount;
 	
 	@Data
-	class Properties {
+	public class Properties {
 		public String nickname;
 		public String thumbnamilImageUrl;
 		public String profileImageUrl;
 	}
 	
 	@Data
-	class KakaoAccount {
+	public class KakaoAccount {
 
 		public Boolean profileNicknameNeedsAgreement;
 		public Profile profile;
@@ -29,7 +29,7 @@ public class KakaoProfile {
 		public String email;
 		
 		@Data
-		class Profile {
+		public class Profile {
 			public String nickname;
 			public String thumbnamilImageUrl;
 			public String profileImageUrl;

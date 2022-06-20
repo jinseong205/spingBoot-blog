@@ -34,6 +34,9 @@ public class Board {
 	
 	@Column(nullable = false, length = 100)
 	private String title;
+
+	@Column(nullable = true)
+	private int category;	//카테고리 번호
 	
 	@Lob
 	private String content;	//섬머노트 라이브러리 <html> 태그가 섞여서 디자인이 됨
@@ -50,4 +53,5 @@ public class Board {
 	@CreationTimestamp
 	private Timestamp createDate;
 	
+
 }

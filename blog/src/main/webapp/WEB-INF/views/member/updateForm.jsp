@@ -3,7 +3,8 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
-
+	<br/>
+	<br/>
 	<form>
 		<input type="hidden" id="id" value="${principal.member.id}"/>
 		<div class="form-group">
@@ -18,10 +19,11 @@
 	</form>
 	
 	<button id="btn-update" class="btn btn-primary">수정완료</button>
+	<%@include file="../layout/footer.jsp"%>
 </div>
 
 <script src="/js/member.js"></script>
-<%@include file="../layout/footer.jsp"%>
+
 
 
 

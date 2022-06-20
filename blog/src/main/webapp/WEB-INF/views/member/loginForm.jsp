@@ -3,7 +3,8 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
-
+	<br/>
+	<br/>
 	<form action="/auth/loginProc" method="post">
 		<div class="form-group">
 			<label for="id">ID</label> <input type="text" name="username" class="form-control" placeholder="Enter ID" id="username">
@@ -15,10 +16,10 @@
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=5e74706108bffe6ea2bef14ddb178495&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><img height="38px" src="/image/kakao_login_button.png"/></a>
 	</form>
 	
-
+	<%@include file="../layout/footer.jsp"%>
 </div>
 
-<%@include file="../layout/footer.jsp"%>
+
 
 
 

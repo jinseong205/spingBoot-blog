@@ -3,8 +3,9 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
+	<br/>
+	<br/>
 	<form>
-		
 		<div class="form-group">
 			<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
 		</div>

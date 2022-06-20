@@ -3,16 +3,16 @@
 <%@include file="layout/header.jsp"%>
 
 <div class="container">
+	<br/>
+	<br/>
 	<div class="card m-2">
 		<div class="card-body">
 			<div class="container float-left">
 				<img height="300px" class="m-3 rounded-circle float-left" src="/image/jinseong.jpg">
 				<div class="m-3 float-left">
 					<h1>Jinseong</h1>
-
 					<br />
 					<br />
-
 					<div class="m-2 ml-5 float-left">
 						<h4>
 							<a class="text-dark" href="https://gomawoomi.tistory.com/">🧑🏻 프로필</a>
@@ -47,5 +47,5 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="layout/footer.jsp"%>
 </div>
-<%@include file="layout/footer.jsp"%>

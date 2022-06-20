@@ -3,7 +3,7 @@
 
 
 <br />
-<div class="bg-light text-center container-fluid navbar-fixed-bottom" style="margin-bottom: 0; padding: 0 0 0 0]">
+<div class="text-center container-fluid navbar-fixed-bottom" style="margin-bottom: 0; padding: 0 0 0 0]">
 	<br/>
 	<pre>
 	Create By Jinseong

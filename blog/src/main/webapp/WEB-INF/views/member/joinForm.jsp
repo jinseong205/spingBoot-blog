@@ -3,7 +3,8 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
-
+	<br/>
+	<br />
 	<form>
 		<div class="form-group">
 			<label for="username">ID</label> <input type="text" class="form-control" placeholder="Enter ID" id="username">
@@ -17,10 +18,11 @@
 	</form>
 	
 	<button id="btn-save" class="btn btn-primary">회원가입</button>
+	<%@include file="../layout/footer.jsp"%>
 </div>
 
 <script src="/js/member.js"></script>
-<%@include file="../layout/footer.jsp"%>
+
 
 
 

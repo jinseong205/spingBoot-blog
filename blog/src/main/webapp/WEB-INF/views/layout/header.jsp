@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
+	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 
 <!DOCTYPE html>
@@ -20,6 +20,11 @@
 <!-- summernote -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/main.js"></script>
+
+
 </head>
 <body class="">
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -28,30 +33,37 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse navbar-ex1-collapse" id="collapsibleNavbar">
-			<c:choose>
-				<c:when test="${empty principal}">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">자료정리</a></li>
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">토이 프로젝트</a></li>
-					</ul>
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
-						<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
-					</ul>
-				</c:when>
-				<c:otherwise>
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/boardList">게시판</a></li>
-						<!-- 
-						<li class="nav-item"><a class="nav-link" href="/board/saveForm">작성</a></li>
-						 -->
-					</ul>
-					<ul class="navbar-nav">	
-						<li class="nav-item"><a class="nav-link" href="/member/updateForm">내 정보</a></li>
-						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
-					</ul>
-				</c:otherwise>
-			</c:choose>
+			<div class="d-flex container-fluid">
+				<c:choose>
+					<c:when test="${empty principal}">
+						<div class="align-self-start">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link" href="/board/boardList">자료정리</a></li>
+								<li class="nav-item"><a class="nav-link" href="/toy/main">토이 프로젝트</a></li>
+							</ul>
+						</div>
+						<div class="align-self-end">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
+								<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
+							</ul>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="align-self-start">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link" href="/board/boardList">자료정리</a></li>
+								<li class="nav-item"><a class="nav-link" href="/toy/main">토이 프로젝트</a></li>
+							</ul>
+						</div>
+						<div class="align-self-end">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link" href="/member/updateForm">내 정보</a></li>
+								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+							</ul>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	</nav>
-	<br>

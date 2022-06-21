@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ToyController {
 	
-	@GetMapping("/toy/main")
+	@GetMapping("/toy")
 	public String toyMain(Model model) {
 		return webGame(model);	//viewResolver 작동!
 	}

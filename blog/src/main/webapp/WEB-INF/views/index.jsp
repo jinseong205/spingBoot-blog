@@ -15,13 +15,13 @@
 					<br />
 					<div class="m-2 ml-5 float-left">
 						<h4>
-							<a class="text-dark" href="https://gomawoomi.tistory.com/">🧑🏻 프로필</a>
+							<a class="text-dark" href= "board/boardList">🧑🏻 프로필</a>
 						</h4>
 						<h4>
-							<a class="text-dark" href="https://github.com/jinseong205">📄 포트폴리오</a>
+							<a class="text-dark" href="board/boardList">📄 포트폴리오</a>
 						</h4>
 						<h4>
-							<a class="text-dark" href="https://github.com/gomawoomi">🔫 토이 프로젝트</a>
+							<a class="text-dark" href="toy/">🔫 토이 프로젝트</a>
 						</h4>
 					</div>
 

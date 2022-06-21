@@ -36,6 +36,7 @@ public class Board {
 	private String title;
 
 	@Column(nullable = true)
+	@ColumnDefault("0")
 	private int category;	//카테고리 번호
 	
 	@Lob

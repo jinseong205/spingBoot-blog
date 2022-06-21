@@ -39,7 +39,7 @@
 						<div class="align-self-start">
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link" href="/board/boardList">자료정리</a></li>
-								<li class="nav-item"><a class="nav-link" href="/toy/main">토이 프로젝트</a></li>
+								<li class="nav-item"><a class="nav-link" href="/toy">토이 프로젝트</a></li>
 							</ul>
 						</div>
 						<div class="align-self-end">
@@ -53,7 +53,7 @@
 						<div class="align-self-start">
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link" href="/board/boardList">자료정리</a></li>
-								<li class="nav-item"><a class="nav-link" href="/toy/main">토이 프로젝트</a></li>
+								<li class="nav-item"><a class="nav-link" href="/toy">토이 프로젝트</a></li>
 							</ul>
 						</div>
 						<div class="align-self-end">

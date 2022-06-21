@@ -9,9 +9,13 @@
 		<br/>	
 		<br/>	
 		<canvas id="myCanvas" class = "webGame" width="800" height="600"></canvas>
+		<br>
+		<div class ="align-items-center">
+			<p class ="d-flex justify-content-center"> Resource - 『유니티5 교과서』</p>
+		</div>
 		<%@include file="../layout/footer.jsp"%>
 	</div>
-
+    
 </div>
 
 <script src="/js/toy/webGame.js"></script> 

@@ -98,7 +98,6 @@ function mouseMoveHandler(e) {
 
 function draw(){
 
-	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawplayer();
 	drawarrow();

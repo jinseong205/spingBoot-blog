@@ -1,7 +1,5 @@
 package com.jinseong.blog.service;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -24,7 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.jinseong.blog.model.KakaoProfile;
 import com.jinseong.blog.model.Member;
-import com.jinseong.blog.model.Member.MemberBuilder;
 import com.jinseong.blog.model.OAuthToken;
 import com.jinseong.blog.model.RoleType;
 import com.jinseong.blog.repository.MemberRepository;
@@ -158,7 +155,6 @@ public class MemberService {
 
 		// Gson, Json Simple, ObejctMapper
 		ObjectMapper objectMapper2 = new ObjectMapper();
-		objectMapper2.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE); // 네이밍 전략 추가 (Snake -> Ca
 		KakaoProfile kakaoProfile = null;
 
 		try {

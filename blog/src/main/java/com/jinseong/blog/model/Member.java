@@ -45,6 +45,9 @@ public class Member {
 	@Enumerated(EnumType.STRING)
 	private RoleType role;	//Enum을 쓰는게 좋음 //admin, user, manager
 	
+	@Column( length = 10)
+	private String oauth;
+	
 	@CreationTimestamp	//시간이 자동으로 입력
 	private Timestamp createDate;
 }

@@ -42,8 +42,9 @@ public class MemberController {
 	}
 	
 	@GetMapping("/auth/kakao/callback")
-	public @ResponseBody String kakaoLoginCallback(String code) { //Data를 리턴해주는 컨트롤러 함수
-		return "카카오 인증 완료 : " + memberService.kakaoLogin(code);
+	public String kakaoLoginCallback(String code) { //Data를 리턴해주는 컨트롤러 함수
+		memberService.kakaoLogin(code);
+		return "redirect:/";
 	}
 	
 	

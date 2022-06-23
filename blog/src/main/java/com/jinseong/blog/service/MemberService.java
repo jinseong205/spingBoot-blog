@@ -3,10 +3,15 @@ package com.jinseong.blog.service;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.jinseong.blog.model.KakaoProfile;
 import com.jinseong.blog.model.Member;
+import com.jinseong.blog.model.Member.MemberBuilder;
 import com.jinseong.blog.model.OAuthToken;
 import com.jinseong.blog.model.RoleType;
 import com.jinseong.blog.repository.MemberRepository;
@@ -31,6 +37,12 @@ public class MemberService {
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Value("${kakao.login-key}")
+	private String kakaoLoingKey;
 
 	@Transactional
 	public int memberInsert(Member member) {
@@ -45,7 +57,6 @@ public class MemberService {
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("MemberService:회원가입()" + e.getMessage());
 		}
 		return -1;
 	}
@@ -55,16 +66,32 @@ public class MemberService {
 		Member member = memberRepository.findById(reqMember.getId()).orElseThrow(() -> {
 			return new IllegalArgumentException("회원 찾기 실패.");
 		});
-		String rawPassword = reqMember.getPassword();
-		String encPassword = encoder.encode(rawPassword);
-		member.setPassword(encPassword);
+
+		if (member.getOauth() == null || member.getOauth().equals("")) {
+			String rawPassword = reqMember.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			member.setPassword(encPassword);
+		}
 		member.setEmail(reqMember.getEmail());
 
 		// 회원 수정 함수 종료시 = 서비스종료 = 트랜잭션 종료 = commit
 		// 영속화된 persistance 객체의 변화가 감지 되면 더티 체킹이 되어 update문을 날려줌
 	}
 
-	public String kakaoLogin(String code) {
+	@Transactional(readOnly = true)
+	public Member memberFindOne(String username) {
+		Member member = null;
+		try {
+			member = memberRepository.findByUsername(username).get();
+		} catch (Exception e) {
+			member = null;
+		}
+
+		return member;
+	}
+
+	@Transactional(readOnly = true)
+	public int kakaoLogin(String code) {
 
 		/* kakao token req */
 
@@ -95,7 +122,6 @@ public class MemberService {
 		try {
 			oAuthToken = objectMapper.readValue(response.getBody().toString(), OAuthToken.class);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -119,30 +145,37 @@ public class MemberService {
 		objectMapper2.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE); // 네이밍 전략 추가 (Snake -> Ca
 		KakaoProfile kakaoProfile = null;
 
-		System.out.println(response2.getBody());
-
 		try {
 			kakaoProfile = objectMapper.readValue(response2.getBody().toString(), KakaoProfile.class);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String tempPassword = kakaoLoingKey;
+		// String encPassword = encoder.encode(tempPassword.toString());
 
-		System.out.println("카카오 아이디 (번호) : " + kakaoProfile.getId());
-		System.out.println("카카오 이메일 (번호) : " + kakaoProfile.getKakao_account().getEmail());
-		
-		System.out.println("블로그 서버 유저 네임 : " + "kakao_" + kakaoProfile.getId());
-		UUID tempPassword = UUID.randomUUID();
-		System.out.println("블로그 서버 유저 네임 : " + tempPassword.toString());
-		
-		return response2.getBody().toString();
+		Member kakaoMember = Member.builder().username("kakao_" + kakaoProfile.getId())
+				.password(tempPassword.toString()).email(kakaoProfile.getKakao_account().getEmail()).role(RoleType.USER)
+				.oauth("kakao").build();
+
+		Member member = memberFindOne(kakaoMember.getUsername());
+
+		if (member == null) {
+			memberInsert(kakaoMember);
+		}
+
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(kakaoMember.getUsername(), tempPassword));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		return 1;
 	}
 
 	// select 할 때 트랜잭션 시작. 서비스 종료시에 트랜잭션 종료
-	//@Transactional(readOnly = true)
-	//public Member login(Member member) {
-	//	return memberRepository.findByUsernameAndPassword(member.getUsername(), member.getPassword());
-	//}
-
+	// @Transactional(readOnly = true)
+	// public Member login(Member member) {
+	// return memberRepository.findByUsernameAndPassword(member.getUsername(),
+	// member.getPassword());
+	// }
 
 }

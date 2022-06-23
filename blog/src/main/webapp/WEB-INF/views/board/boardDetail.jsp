@@ -7,8 +7,7 @@
 <div class="wrapper">
 	<%@include file="../layout/boardSideBar.jsp"%>
 	<div id="content" class="container-fluid ">
-		<br/>
-		<br/>
+		<br /> <br />
 		<div class="container">
 
 			<div>
@@ -28,10 +27,27 @@
 				<a href="/board/updateForm/${board.id}" class="btn btn-secondary">수정</a>
 				<button id="btn-delete" class="btn btn-secondary">삭제</button>
 			</c:if>
+
+			<hr />
+			<div class="card">
+				<div class="card-body">
+					<textarea class="form-control" rows="1"></textarea>
+				</div>
+
+				<div class="card-footer">
+					<button class="btn btn-primary">등록</button>
+				</div>
+			</div>
+			<br/>
+			<div class="card">
+				<div class="card-header">
+				댓글리스트
+				</div>
+			</div>
+
+
+
+			<%@include file="../layout/footer.jsp"%>
+			<script src="/js/board.js"></script>
 		</div>
-
-		<%@include file="../layout/footer.jsp"%>
-		<script src="/js/board.js"></script>
 	</div>
-</div>
-

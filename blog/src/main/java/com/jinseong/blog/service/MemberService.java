@@ -43,6 +43,22 @@ public class MemberService {
 
 	@Value("${kakao.login-key}")
 	private String kakaoLoingKey;
+	
+	@Value("${kakao.client-id}")
+	private String kakaoClientId;
+	
+	@Value("${kakao.redirect-uri}")
+	private String kakaoRedirectUri;
+
+	@Value("${kakao.logout-uri}")
+	private String kakaoLogoutUri;
+	
+	@Value("${kakao.token-req-uri}")
+	private String kakaoTokenReqUri;
+	
+	@Value("${kakao.user-info-uri}")
+	private String kakaoUserInfoUri;
+	
 
 	@Transactional
 	public int memberInsert(Member member) {
@@ -105,15 +121,15 @@ public class MemberService {
 		// Body
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "authorization_code");
-		params.add("client_id", "5e74706108bffe6ea2bef14ddb178495");
-		params.add("redirect_uri", "http://localhost:8000/auth/kakao/callback");
+		params.add("client_id", kakaoClientId);
+		params.add("redirect_uri", kakaoRedirectUri);
 		params.add("code", code);
 
 		// Hedaer + Body
 		HttpEntity<MultiValueMap<String, String>> kakaoTokenReq = new HttpEntity<>(params, headers);
 
 		// Http 요청하기 - Post방식 response 변수의 응답을 받음
-		ResponseEntity response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST, kakaoTokenReq,
+		ResponseEntity response = rt.exchange(kakaoTokenReqUri, HttpMethod.POST, kakaoTokenReq,
 				String.class);
 
 		// Gson, Json Simple, ObejctMapper
@@ -137,7 +153,7 @@ public class MemberService {
 		HttpEntity<MultiValueMap<String, String>> kakaoProfileReq2 = new HttpEntity<>(headers2);
 
 		// Http 요청하기 - Post방식 response 변수의 응답을 받음
-		ResponseEntity response2 = rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST, kakaoProfileReq2,
+		ResponseEntity response2 = rt2.exchange(kakaoUserInfoUri, HttpMethod.POST, kakaoProfileReq2,
 				String.class);
 
 		// Gson, Json Simple, ObejctMapper

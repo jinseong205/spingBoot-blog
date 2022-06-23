@@ -1,6 +1,7 @@
 package com.jinseong.blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -28,6 +29,15 @@ import com.jinseong.blog.service.MemberService;
 @Controller
 public class MemberController {
 
+	@Value("${kakao.login-uri}")
+	private String kakaoLoingUri;
+	
+	@Value("${kakao.client-id}")
+	private String kakaoClientId;
+	
+	@Value("${kakao.redirect-uri}")
+	private String kakaoRedirectUri;
+	
 	@Autowired
 	private MemberService memberService;
 	
@@ -39,6 +49,13 @@ public class MemberController {
 	@GetMapping("/auth/loginForm")
 	public String LoginForm() {
 		return "member/loginForm";
+	}
+	
+	@GetMapping("/auth/kakao/login")
+	public String kakaoLogin(String code) { //Data를 리턴해주는 컨트롤러 함수
+		String loginUrl = String.format(kakaoLoingUri, kakaoClientId, kakaoRedirectUri);
+		System.out.println("kakao Login Url 호출 : " +  loginUrl);
+		return "redirect:" + loginUrl;
 	}
 	
 	@GetMapping("/auth/kakao/callback")

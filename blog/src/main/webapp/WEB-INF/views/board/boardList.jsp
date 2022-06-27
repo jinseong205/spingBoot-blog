@@ -42,7 +42,6 @@
 										<pre>${board.member.username} | ${fn:substring(board.createDate,0,10)}</pre>
 									</div>
 								</a>
-
 							</div>
 						</div>
 					</c:forEach>

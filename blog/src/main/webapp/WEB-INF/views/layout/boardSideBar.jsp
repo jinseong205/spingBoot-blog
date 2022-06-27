@@ -4,7 +4,7 @@
 	<div class="list-group list-group-flush">
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Portfolio</a>
-		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">ToyProject</a>
-		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Visitor</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Toy Project</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Free Board</a>
 	</div>
 </div>

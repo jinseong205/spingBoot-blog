@@ -46,6 +46,7 @@
 						<hr />
 						<ul class="navbar-nav">
 							<img class="m-1 img-fluid" src="https://ghchart.rshah.org/666666/jinseong205" />
+						<br/>
 					</div>
 				</div>
 

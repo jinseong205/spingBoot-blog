@@ -16,7 +16,8 @@
 						<button class="btn btn-primary" id="sidebarToggle"><></button>
 					</div>
 				</div>
-				<canvas id="myCanvas" class="webGame" width="800" height="600"></canvas>
+				<br/>
+				<canvas id="myCanvas" class="webGame" width="600" height="450"></canvas>
 				<br>
 				<div class="align-items-center">
 					<p class="d-flex justify-content-center">Resource - 『유니티5 교과서』</p>

@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jinseong.blog.model.Board;
 import com.jinseong.blog.model.Member;
+import com.jinseong.blog.model.Reply;
 import com.jinseong.blog.repository.BoardRepository;
+import com.jinseong.blog.repository.ReplyRepository;
 
 @Service
 public class BoardService {
@@ -16,6 +18,8 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
+	@Autowired
+	private ReplyRepository replyRepository;
 	
 	@Transactional
 	public void saveBoard (Board board, Member member) {	//title, content
@@ -53,6 +57,20 @@ public class BoardService {
 
 		//해당 함수로 종료시에 Service가 종료될 때  트랜잭션이 종료됩니다.
 		//이때 더티 체킹 - 자동 업데이트가 됨. db flush
+	}
+	
+	@Transactional
+	public void saveReply(Reply reply, int boardId, Member member) {
+		
+		Board board = boardRepository.findById(boardId).orElseThrow(()->{
+			return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 id를 찾을 수 없습니다");
+		});
+		
+		reply.setMember(member);
+		reply.setBoard(board);
+		
+		replyRepository.save(reply);
+		
 	}
 
 }

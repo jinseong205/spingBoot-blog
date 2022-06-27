@@ -2,29 +2,38 @@
 
 <%@include file="../layout/header.jsp"%>
 
-<div class="container">
-	<br/>
-	<br/>
-	<form>
-		<div class="form-group">
-			<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
-		</div>
-		<div class="form-group">
-			<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
-		</div>
-		<input type="hidden" id="id" value="${board.id}"
-	</form>
-	<button id="btn-update" class="btn btn-primary">글수정 완료</button>
-</div>
 
-<script>
-	$('.summernote').summernote({
-		tabsize : 2,
-		height : 300
-	});
-</script>
+<body class="">
+	<div class="d-flex" id="wrapper">
+		<div id="page-content-wrapper">
+			<%@include file="../layout/nav.jsp"%>
+			<div class="container">
+				<div id="page-content-wrapper">
+					<br /> <br />
+					<form>
+						<div class="form-group">
+							<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
+						</div>
+						<div class="form-group">
+							<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
+						</div>
+						<input type="hidden" id="id" value="${board.id}">
+					</form>
+					<button id="btn-update" class="btn btn-primary">글수정 완료</button>
+				</div>
 
-<%@include file="../layout/footer.jsp"%>
-<script src="/js/board.js"></script>
+				<script>
+					$('.summernote').summernote({
+						tabsize : 2,
+						height : 300
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<%@include file="../layout/footer.jsp"%>
+	<script src="/js/board.js"></script>
+</body>
+</html>
 
 

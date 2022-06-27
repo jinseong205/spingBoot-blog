@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<nav id="sidebar">
-	<ul class="list-unstyled components">
-		<li><a href="#">Canvas 웹게임</a></li>
-		<li><a href="#">Smart Contract 연습</a></li>
-		<li><a href="#">Riot API</a></li>
-		<li><a href="#">WebSocket 채팅</a></li>
-	</ul>
-</nav>
+<div class="border-end bg-white" id="sidebar-wrapper">
+	<div class="sidebar-heading border-bottom bg-light">　</div>
+	<div class="list-group list-group-flush">
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Canvas 웹게임</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Smart Contract 연습</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Riot API</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">WebSocket 채팅</a>
+	</div>
+</div>

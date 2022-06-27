@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<nav id="sidebar">
-	<ul class="list-unstyled components">
-		<li><a href="#">Profile</a></li>
-		<li><a href="#">Portfolio</a></li>
-		<li><a href="#">ToyProject</a></li>
-		<li><a href="#">Visitor</a></li>
-	</ul>
-</nav>
+<div class="border-end bg-white" id="sidebar-wrapper">
+	<div class="sidebar-heading border-bottom bg-light">　</div>
+	<div class="list-group list-group-flush">
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Portfolio</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">ToyProject</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Visitor</a>
+	</div>
+</div>

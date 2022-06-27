@@ -1,0 +1,6 @@
+.webGame {
+	background: url('/image/webGame/background.png') center repeat;
+	background-size: contain;
+	display: block;
+	margin: 0 auto;
+}

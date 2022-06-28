@@ -37,18 +37,24 @@
 					</c:if>
 
 					<hr />
-					<div class="card">
-						<form>
-							<input type="hidden" id="boardId" value="${board.id}" />
-							<div class="card-body">
-								<textarea id="reply-content" class="form-control" rows="1"></textarea>
-							</div>
 
-							<div class="card-footer">
-								<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+					<c:choose>
+						<c:when test="${not empty principal}">
+							<div class="card">
+								<form>
+									<input type="hidden" id="memberId" value="${principal.member.id}"/>
+									<input type="hidden" id="boardId" value="${board.id}" />
+									<div class="card-body">
+										<textarea id="reply-content" class="form-control" rows="1"></textarea>
+									</div>
+
+									<div class="card-footer">
+										<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+									</div>
+								</form>
 							</div>
-						</form>
-					</div>
+						</c:when>
+					</c:choose>
 
 					<br />
 					<div class="card">

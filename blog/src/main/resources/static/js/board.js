@@ -13,7 +13,7 @@ let index = {
 		});
 
 		$("#btn-reply-save").on("click", () => {
-			this.replySave();
+			this.replySaveDto();
 		})
 	},
 
@@ -96,6 +96,29 @@ let index = {
 			alert(JSON.stringify(err))
 		});
 	},
+
+	replySaveDto: function() {
+		let data = {
+			content: $("#reply-content").val(),
+			boardId: $("#boardId").val(),
+			memberId: $("#memberId").val(),
+
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: `/api/board/reply`,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json" //response dataType
+		}).done(function(res) {
+			alert("댓글 작성이 완료되었습니다.");
+			location.href = `/board/boardDetail/${data.boardId}`;
+		}).fail(function(err) {
+			alert(JSON.stringify(err))
+		});
+	},
+
 
 
 }

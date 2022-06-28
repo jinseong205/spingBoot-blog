@@ -6,10 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jinseong.blog.dto.ReplySaveRequestDto;
 import com.jinseong.blog.model.Board;
 import com.jinseong.blog.model.Member;
 import com.jinseong.blog.model.Reply;
 import com.jinseong.blog.repository.BoardRepository;
+import com.jinseong.blog.repository.MemberRepository;
 import com.jinseong.blog.repository.ReplyRepository;
 
 @Service
@@ -20,6 +22,9 @@ public class BoardService {
 	
 	@Autowired
 	private ReplyRepository replyRepository;
+	
+	@Autowired
+	private MemberRepository memberRepository;
 	
 	@Transactional
 	public void saveBoard (Board board, Member member) {	//title, content
@@ -71,6 +76,31 @@ public class BoardService {
 		
 		replyRepository.save(reply);
 		
+	}
+	
+	@Transactional
+	public void saveReply(ReplySaveRequestDto replyDto) {
+		
+
+		/*
+		Member member = memberRepository.findById(replyDto.getMemberId()).orElseThrow(()->{
+			return new IllegalArgumentException("댓글 쓰기 실패 : 회원 id를 찾을 수 없습니다");
+		});
+		
+		Board board = boardRepository.findById(replyDto.getBoardId()).orElseThrow(()->{
+			return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 id를 찾을 수 없습니다");
+		});
+		
+		Reply reply = Reply.builder()
+				.content(replyDto.getContent())
+				.member(member)
+				.board(board)
+				.build();
+		
+		replyRepository.save(reply);
+		*/
+		
+		replyRepository.mSave(replyDto.getMemberId(), replyDto.getBoardId(), replyDto.getContent());
 	}
 
 }

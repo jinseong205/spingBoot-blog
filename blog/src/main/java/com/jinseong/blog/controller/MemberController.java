@@ -41,7 +41,6 @@ public class MemberController {
 	@GetMapping("/auth/kakao/login")
 	public String kakaoLogin(String code) { //Data를 리턴해주는 컨트롤러 함수
 		String loginUrl = String.format(kakaoLoingUri, kakaoClientId, kakaoRedirectUri);
-		System.out.println("kakao Login Url 호출 : " +  loginUrl);
 		return "redirect:" + loginUrl;
 	}
 	

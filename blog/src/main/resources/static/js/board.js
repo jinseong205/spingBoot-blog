@@ -1,6 +1,8 @@
 
 let index = {
 	init: function() {
+
+
 		$("#btn-save").on("click", () => { // this 바인딩
 			this.save();
 		});
@@ -14,15 +16,18 @@ let index = {
 
 		$("#btn-reply-save").on("click", () => {
 			this.replySaveDto();
-		})
+		});
+
+
 	},
 
 	save: function() {
 		let data = {
 			title: $("#title").val(),
 			content: $("#content").val(),
+			category: $("#category").val(),
 		}
-
+		
 		$.ajax({
 			type: "POST",
 			url: "/api/board",
@@ -30,8 +35,14 @@ let index = {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("글 작성이 완료되었습니다.");
-			location.href = "/board/boardList";
+			if (res.status === 500) {
+				alert("글 작성이 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("글 작성이 완료되었습니다.");
+				location.href = "/board/boardList";
+			}
+
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
@@ -47,8 +58,15 @@ let index = {
 			dataType: "json",
 			contentType: "application/json; charset=utf-8"
 		}).done(function(res) {
-			alert("삭제가 완료되었습니다.");
-			location.href = "/board/boardList/";
+			if (res.status === 500) {
+				alert("글 삭제가 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("글 삭제가 완료되었습니다.");
+				location.href = "/board/boardList/";
+			}
+
+
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
@@ -68,20 +86,25 @@ let index = {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("글 수정이 완료되었습니다.");
-			location.href = "/board/boardList/";
+			if (res.status === 500) {
+				alert("글 수정이 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("글 수정이 완료되었습니다.");
+				location.href = "/board/boardList/";
+			}
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
 	},
 
-	
+
 	replySave: function() {
 		let data = {
 			content: $("#reply-content").val()
 		}
-		
-		let boardId =  $("#boardId").val();
+
+		let boardId = $("#boardId").val();
 
 		$.ajax({
 			type: "POST",
@@ -90,8 +113,13 @@ let index = {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("댓글 작성이 완료되었습니다.");
-			location.href = `/board/boardDetail/${boardId}`;
+			if (res.status === 500) {
+				alert("댓글 작성이 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("댓글 작성이 완료되었습니다.");
+				location.href = `/board/boardDetail/${boardId}`;
+			}
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
@@ -104,7 +132,7 @@ let index = {
 			memberId: $("#memberId").val(),
 
 		}
-		
+
 		$.ajax({
 			type: "POST",
 			url: `/api/board/reply`,
@@ -112,8 +140,14 @@ let index = {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("댓글 작성이 완료되었습니다.");
-			location.href = `/board/boardDetail/${data.boardId}`;
+
+			if (res.status === 500) {
+				alert("댓글 작성이 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("댓글 작성이 완료되었습니다.");
+				location.href = `/board/boardDetail/${data.boardId}`;
+			}
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});

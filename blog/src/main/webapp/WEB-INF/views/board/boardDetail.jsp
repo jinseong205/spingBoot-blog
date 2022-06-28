@@ -9,9 +9,7 @@
 			<%@include file="../layout/nav.jsp"%>
 
 			<div id="content" class="container-fluid ">
-				<br /> <br />
-
-				<div class="container">
+				<div class="m-5">
 					<div class="clearfix container-fluid">
 						<div class="float-left">
 							<button class="btn btn-primary" id="sidebarToggle"><></button>
@@ -26,9 +24,11 @@
 						<h3>${board.title}</h3>
 					</div>
 					<hr />
+					<br/>
 					<div>
 						<div>${board.content}</div>
 					</div>
+					<br/>
 					<hr />
 					<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
 					<c:if test="${board.member.id == principal.member.id}">

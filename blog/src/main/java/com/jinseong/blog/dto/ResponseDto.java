@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonPOJOBuilder
 public class ResponseDto<T> {
-	HttpStatus status;
+	int status;
 	T data;
 }

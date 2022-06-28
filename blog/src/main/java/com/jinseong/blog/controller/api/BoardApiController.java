@@ -31,31 +31,31 @@ public class BoardApiController {
 	@PostMapping("/api/board")
 	public ResponseDto<Integer> save(@RequestBody Board	 board, @AuthenticationPrincipal PrincipalDetail principal) {
 		boardService.saveBoard(board, principal.getMember());
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id) {
 		boardService.deleteBoard(id);
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 	@PutMapping("/api/board/{id}")
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board) {
 		boardService.updateBoard(id, board);
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	// 데이터 받을 때 controller에서 dto를 만들어서 받는게 좋다.
 	@PostMapping("/api/board/{boardId}/reply")
 	public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal) {
 		boardService.saveReply(reply, boardId ,principal.getMember());
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
 	@PostMapping("/api/board/reply")
 	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto reply) {
 		boardService.saveReply(reply);
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 }

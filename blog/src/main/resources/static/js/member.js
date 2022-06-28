@@ -30,9 +30,14 @@ let index = {
 			contentType: "application/json; charset=utf-8", //request body dataType
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("회원가입이 완료되었습니다.");
-			console.log(res);
-			location.href = "/auth/loginForm";
+			if (res.status === 500) {
+				alert("회원가입에 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("회원가입이 완료되었습니다.");
+				location.href = "/auth/loginForm";
+			}
+
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});
@@ -55,9 +60,14 @@ let index = {
 			contentType: "application/json; charset=utf-8", //request body dataType
 			dataType: "json" //response dataType
 		}).done(function(res) {
-			alert("회원수정이 완료되었습니다.");
-			console.log(res);
-			location.href = "/";
+
+			if (res.status === 500) {
+				alert("회원수정에 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("회원수정이 완료되었습니다.");
+				location.href = "/auth/loginForm";
+			}
 		}).fail(function(err) {
 			alert(JSON.stringify(err))
 		});

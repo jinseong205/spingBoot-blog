@@ -12,6 +12,6 @@ import com.jinseong.blog.dto.ResponseDto;
 public class GlobalExceptionHanddler {
 	@ExceptionHandler(value=Exception.class)
 	public ResponseDto<String> hadnleArgumentException(Exception e) {
-		return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+		return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
 	}
 }

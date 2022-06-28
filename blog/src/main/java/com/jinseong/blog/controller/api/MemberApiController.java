@@ -35,7 +35,7 @@ public class MemberApiController {
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody Member member) {
 		int result = memberService.memberInsert(member);
-		return new ResponseDto<Integer>(HttpStatus.OK, result);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 	
 	@PutMapping("/member")
@@ -45,7 +45,7 @@ public class MemberApiController {
 		//세션 등록
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(member.getUsername(), member.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
 	/*

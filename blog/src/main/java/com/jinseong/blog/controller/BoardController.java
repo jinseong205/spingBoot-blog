@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jinseong.blog.service.BoardService;
 
@@ -20,9 +21,18 @@ public class BoardController {
 	//컨트롤러에서 세션을 어떻게 찾는지
 	//@AuthenticationPrincipal PrincipalDetail principal
 
-	@GetMapping({"/board/boardList","/board/boardList"})
+	/*
+	@GetMapping("/board/boardList")
 	public String board(@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable, Model model) {
 		model.addAttribute("boards", boardService.findBoardAll(pageable));
+		return "board/boardList";	//viewResolver 작동!
+	}
+	*/
+	
+	@GetMapping("/board/boardList")
+	public String boardGroupByCategory(@RequestParam(name="category", defaultValue="0") int id, @PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable, Model model) {
+		model.addAttribute("category", id);
+		model.addAttribute("boards", boardService.findBoardAllByCategory(id, pageable));
 		return "board/boardList";	//viewResolver 작동!
 	}
 

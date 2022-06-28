@@ -39,6 +39,12 @@ public class BoardService {
 	}
 
 	@Transactional(readOnly=true)
+	public Page<Board> findBoardAllByCategory(int id,Pageable pageable) {
+		return boardRepository.findBoardAllByCategory(id,pageable);
+	}
+
+	
+	@Transactional(readOnly=true)
 	public Board boardDetail(int id) {
 		return boardRepository.findById(id)
 				.orElseThrow(()->{
@@ -59,7 +65,8 @@ public class BoardService {
 				}); //영속화 완료
 		board.setTitle(requestBoard.getTitle());
 		board.setContent(requestBoard.getContent());
-
+		board.setCategory(requestBoard.getCategory());
+		
 		//해당 함수로 종료시에 Service가 종료될 때  트랜잭션이 종료됩니다.
 		//이때 더티 체킹 - 자동 업데이트가 됨. db flush
 	}

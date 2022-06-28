@@ -11,6 +11,16 @@
 				<br /> <br />
 				<form>
 					<div class="form-group">
+						Category: <select id="category" class="selectpicker">
+							<option value=0>Free Board</option>
+							<c:if test="${principal.member.role eq 'ADMIN'}">
+								<option value=1>Profile</option>
+								<option value=2>PortFolio</option>
+								<option value=3>Toy Project</option>
+							</c:if>
+						</select>
+					</div>
+					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Enter title" id="title">
 					</div>
 

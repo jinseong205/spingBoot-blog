@@ -27,7 +27,7 @@ let index = {
 			content: $("#content").val(),
 			category: $("#category").val(),
 		}
-		
+
 		$.ajax({
 			type: "POST",
 			url: "/api/board",
@@ -153,6 +153,24 @@ let index = {
 		});
 	},
 
+	replyDelete: function(boardId, replyId) {
+		$.ajax({
+			type: "DELETE",
+			url: `/api/board/${boardId}/reply/${replyId}`,
+			contentType: "application/json; charset=utf-8",
+			dataType: "json" //response dataType
+		}).done(function(res) {
+			if (res.status === 500) {
+				alert("댓글 삭제가 실패하였습니다. \n" + res.data);
+			}
+			else {
+				alert("댓글 삭제가 완료되었습니다.");
+				location.href = `/board/boardDetail/${boardId}`;
+			}
+		}).fail(function(err) {
+			alert(JSON.stringify(err))
+		});
+	},
 
 
 }

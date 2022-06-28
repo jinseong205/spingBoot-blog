@@ -35,14 +35,14 @@ public class BoardApiController {
 	}
 
 	@DeleteMapping("/api/board/{id}")
-	public ResponseDto<Integer> deleteById(@PathVariable int id) {
-		boardService.deleteBoard(id);
+	public ResponseDto<Integer> deleteById(@PathVariable int id,  @AuthenticationPrincipal PrincipalDetail principal) throws Exception {
+		boardService.deleteBoard(id, principal);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 	@PutMapping("/api/board/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board) {
-		boardService.updateBoard(id, board);
+	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board,  @AuthenticationPrincipal PrincipalDetail principal) throws Exception {
+		boardService.updateBoard(id, board, principal);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	// 데이터 받을 때 controller에서 dto를 만들어서 받는게 좋다.
@@ -55,6 +55,12 @@ public class BoardApiController {
 	@PostMapping("/api/board/reply")
 	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto reply) {
 		boardService.saveReply(reply);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+	public ResponseDto<Integer> replyDelete(@PathVariable int replyId, @AuthenticationPrincipal PrincipalDetail principal) throws Exception{
+		boardService.deleteReply(replyId, principal);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 

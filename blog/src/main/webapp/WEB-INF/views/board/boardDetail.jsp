@@ -24,15 +24,17 @@
 						<h3>${board.title}</h3>
 					</div>
 					<hr />
-					<br/>
+					<br />
 					<div>
 						<div>${board.content}</div>
 					</div>
-					<br/>
+					<br />
 					<hr />
 					<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
 					<c:if test="${board.member.id == principal.member.id}">
 						<a href="/board/updateForm/${board.id}" class="btn btn-secondary">수정</a>
+					</c:if>
+					<c:if test="${board.member.id == principal.member.id || principal.member.role eq 'ADMIN'}">
 						<button id="btn-delete" class="btn btn-secondary">삭제</button>
 					</c:if>
 
@@ -42,8 +44,7 @@
 						<c:when test="${not empty principal}">
 							<div class="card">
 								<form>
-									<input type="hidden" id="memberId" value="${principal.member.id}"/>
-									<input type="hidden" id="boardId" value="${board.id}" />
+									<input type="hidden" id="memberId" value="${principal.member.id}" /> <input type="hidden" id="boardId" value="${board.id}" />
 									<div class="card-body">
 										<textarea id="reply-content" class="form-control" rows="1"></textarea>
 									</div>
@@ -62,11 +63,13 @@
 						<div class="card-header">댓글리스트</div>
 						<ul id="reply--box" class="list-group">
 							<c:forEach var="reply" items="${board.replys}">
-								<li id="reply--1" class="list-group-item d-flex justify-content-between">
+								<li id="reply--${reply.id}" class="list-group-item d-flex justify-content-between">
 									<div>${reply.content}</div>
 									<div class="d-flex">
 										<div class="font-italic">작성자 : ${reply.member.username} &nbsp;</div>
-										<button class="badge">삭제</button>
+										<c:if test="${reply.member.id eq principal.member.id|| principal.member.role eq 'ADMIN'}">
+											<button onClick="index.replyDelete(${board.id},${reply.id})" class="badge">삭제</button>
+										</c:if>
 									</div>
 								</li>
 							</c:forEach>

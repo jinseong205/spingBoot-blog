@@ -6,7 +6,7 @@
 	<div class="d-flex" id="wrapper">
 		<div id="page-content-wrapper">
 			<%@include file="../layout/nav.jsp"%>
-			<div class="container">
+			<div class="container pr-5 pl-5">
 				<br /> <br />
 				<form action="/auth/loginProc" method="post">
 					<div class="form-group">

@@ -7,3 +7,4 @@ blog/src/main/resources/key/Wallet_DB202201212242/keystore.jks
 blog/src/main/resources/key/Wallet_DB202201212242/ojdbc.properties
 blog/src/main/resources/key/Wallet_DB202201212242/README
 blog/src/main/resources/key/Wallet_DB202201212242/truststore.jks
+*.yml

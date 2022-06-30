@@ -16,26 +16,24 @@
 							<c:if test="${principal.member.role eq 'ADMIN'}">
 								<option value=1>Profile</option>
 								<option value=2>PortFolio</option>
-								<option value=3>Toy Project</option>
 							</c:if>
 						</select>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Enter title" id="title">
 					</div>
-
 					<div class="form-group">
-						<textarea class="form-control summernote" rows="5" id="content"></textarea>
+						<div name="editor" id="content"></div>
 					</div>
+
 				</form>
 				<button id="btn-save" class="btn btn-primary">글쓰기 완료</button>
 			</div>
 
 			<script>
-				$('.summernote').summernote({
-					tabsize : 2,
-					height : 300
-				});
+				window.onload = function() {
+					ck = CKEDITOR.replace("editor");
+				};
 			</script>
 		</div>
 	</div>

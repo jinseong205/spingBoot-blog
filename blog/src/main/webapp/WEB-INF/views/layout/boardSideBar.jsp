@@ -4,7 +4,6 @@
 	<div class="list-group list-group-flush">
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/boardList?category=1">Profile</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/boardList?category=2">Portfolio</a>
-		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/boardList?category=3">Toy Project</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/boardList?category=0">Free Board</a>
 	</div>
 </div>

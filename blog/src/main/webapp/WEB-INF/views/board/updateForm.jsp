@@ -15,7 +15,7 @@
 							<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
 						</div>
 						<div class="form-group">
-							<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
+						<textarea id="content">${board.content}</textarea>
 						</div>
 						<input type="hidden" id="id" value="${board.id}">
 					</form>
@@ -23,10 +23,11 @@
 				</div>
 
 				<script>
-					$('.summernote').summernote({
-						tabsize : 2,
-						height : 300
-					});
+					window.onload = function() {
+						ck = CKEDITOR.replace('content');
+						CKEDITOR.config.height = 400;
+
+					};
 				</script>
 			</div>
 		</div>

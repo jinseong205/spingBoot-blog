@@ -23,7 +23,10 @@
 						<input type="text" class="form-control" placeholder="Enter title" id="title">
 					</div>
 					<div class="form-group">
-						<div name="editor" id="content"></div>
+						
+						<textarea id="content"></textarea>
+						<!--  <div name="ck-editor" class="content"></div>
+						-->
 					</div>
 
 				</form>
@@ -32,7 +35,9 @@
 
 			<script>
 				window.onload = function() {
-					ck = CKEDITOR.replace("editor");
+					ck = CKEDITOR.replace('content');
+					CKEDITOR.config.height = 400;
+					
 				};
 			</script>
 		</div>

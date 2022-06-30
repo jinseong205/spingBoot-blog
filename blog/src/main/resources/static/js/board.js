@@ -27,7 +27,7 @@ let index = {
 			content: CKEDITOR.instances.content.getData(),
 			category: $("#category").val(),
 		}
-		alert("." + data.content);
+		
 		$.ajax({
 			type: "POST",
 			url: "/api/board",
@@ -77,7 +77,7 @@ let index = {
 
 		let data = {
 			title: $("#title").val(),
-			content: $("#content").val(),
+			content: CKEDITOR.instances.content.getData(),
 		}
 		$.ajax({
 			type: "PUT",

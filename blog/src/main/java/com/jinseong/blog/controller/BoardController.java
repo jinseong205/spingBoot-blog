@@ -34,7 +34,7 @@ public class BoardController {
 
 	@Value("${ck-editor.image-upload.path}")
 	private String imageUploadPath;
-	
+
 	// 컨트롤러에서 세션을 어떻게 찾는지
 	// @AuthenticationPrincipal PrincipalDetail principal
 
@@ -74,71 +74,9 @@ public class BoardController {
 
 	// ck 에디터에서 파일 업로드
 	@PostMapping("/board/ckUpload")
-	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
+	public void CKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
 			@RequestParam MultipartFile upload) throws Exception {
-
-		String uploadPath = req.getSession().getServletContext().getRealPath("image/board");
-		
-				// 랜덤 문자 생성
-		UUID uid = UUID.randomUUID();
-
-		OutputStream out = null;
-		PrintWriter printWriter = null;
-
-		// 인코딩
-		res.setCharacterEncoding("utf-8");
-		res.setContentType("application/json");
-
-		try {
-
-			String fileName = upload.getOriginalFilename(); // 파일 이름 가져오기
-			byte[] bytes = upload.getBytes();
-			
-			
-			// 업로드 경로
-			String ckUploadPath = uploadPath + File.separator  + uid + "_" + fileName;
-			
-			
-			System.out.println(uploadPath);
-			System.out.println(ckUploadPath);
-			
-			File uploadFile = new File(ckUploadPath);
-			uploadFile.createNewFile();
-			out = new FileOutputStream(uploadFile);
-			
-			out.write(bytes);
-			out.flush(); // out에 저장된 데이터를 전송하고 초기화
-
-			// String callback = req.getParameter("CKEditorFuncNum");
-			printWriter = res.getWriter();
-			String fileUrl = uid + "_" + fileName; // 작성화면
-			// 업로드시 메시지 출력
-			JSONObject json = new JSONObject();
-			json.put("uploaded", 1);	
-			json.put("fileName", fileName);
-			json.put("url", fileUrl);
-			printWriter.println(json);
-
-			printWriter.flush();
-			System.out.println("test url : " + req.getSession().getServletContext().getRealPath("resouces/ckUpload"));
-			System.out.println("url : " + fileUrl);
-			System.out.println("ckUploadPath : " + ckUploadPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (out != null) {
-					out.close();
-				}
-				if (printWriter != null) {
-					printWriter.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return;
+			boardService.CKEditorImgUpload(req,res,upload);
 	}
 
 }

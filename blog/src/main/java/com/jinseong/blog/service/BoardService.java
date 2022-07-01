@@ -1,11 +1,24 @@
 package com.jinseong.blog.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jinseong.blog.auth.PrincipalDetail;
 import com.jinseong.blog.dto.ReplySaveRequestDto;
@@ -138,6 +151,70 @@ public class BoardService {
 		replyRepository.deleteById(replyId);
 	}
 
+	public void CKEditorImgUpload(HttpServletRequest req, HttpServletResponse res, MultipartFile upload)
+			throws Exception {
 
+		String uploadPath = req.getSession().getServletContext().getRealPath("upload/board");
 
+		// 랜덤 문자 생성
+		UUID uid = UUID.randomUUID();
+
+		OutputStream out = null;
+		PrintWriter printWriter = null;
+
+		// 인코딩
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("application/json");
+
+		try {
+
+			String fileName = upload.getOriginalFilename(); // 파일 이름 가져오기
+			byte[] bytes = upload.getBytes();
+
+			// 업로드 경로
+			String ckUploadPath = uploadPath + File.separator + uid + "_" + fileName;
+
+			// System.out.println(uploadPath);
+			// System.out.println(ckUploadPath);
+
+			File uploadFile = new File(ckUploadPath);
+			uploadFile.createNewFile();
+			out = new FileOutputStream(uploadFile);
+
+			out.write(bytes);
+			out.flush(); // out에 저장된 데이터를 전송하고 초기화
+
+			// String callback = req.getParameter("CKEditorFuncNum");
+			printWriter = res.getWriter();
+			String fileUrl = "/upload/board/" + uid + "_" + fileName; // 작성화면
+			// 업로드시 메시지 출력
+			JSONObject json = new JSONObject();
+			json.put("uploaded", 1);
+			json.put("fileName", fileName);
+			json.put("url", fileUrl);
+			printWriter.println(json);
+
+			// System.out.println("test url : " +
+			// req.getSession().getServletContext().getRealPath("resouces/ckUpload"));
+			// System.out.println("url : " + fileUrl);
+			// System.out.println("ckUploadPath : " + ckUploadPath);
+
+			printWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (printWriter != null) {
+					printWriter.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return;
+	}
 }

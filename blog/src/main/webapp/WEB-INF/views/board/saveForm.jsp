@@ -23,10 +23,7 @@
 						<input type="text" class="form-control" placeholder="Enter title" id="title">
 					</div>
 					<div class="form-group">
-
-						<textarea id="content"></textarea>
-						<!--  <div name="ck-editor" class="content"></div>
-						-->
+						<textarea id="ckEditor"></textarea>
 					</div>
 
 				</form>

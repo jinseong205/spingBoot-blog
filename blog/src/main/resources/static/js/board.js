@@ -1,7 +1,7 @@
 
 let index = {
 	init: function() {
-		ck = CKEDITOR.replace('content',{
+		ck = CKEDITOR.replace('ckEditor',{
 			filebrowserUploadUrl: '/board/ckUpload'
 		});
 		CKEDITOR.config.height = 400;

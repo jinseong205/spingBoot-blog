@@ -15,7 +15,7 @@
 							<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
 						</div>
 						<div class="form-group">
-						<textarea id="content">${board.content}</textarea>
+						<textarea id="ckEditor">${board.content}</textarea>
 						</div>
 						<input type="hidden" id="id" value="${board.id}">
 					</form>

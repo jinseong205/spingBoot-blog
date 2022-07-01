@@ -23,7 +23,7 @@
 						<input type="text" class="form-control" placeholder="Enter title" id="title">
 					</div>
 					<div class="form-group">
-						
+
 						<textarea id="content"></textarea>
 						<!--  <div name="ck-editor" class="content"></div>
 						-->
@@ -32,14 +32,6 @@
 				</form>
 				<button id="btn-save" class="btn btn-primary">글쓰기 완료</button>
 			</div>
-
-			<script>
-				window.onload = function() {
-					ck = CKEDITOR.replace('content');
-					CKEDITOR.config.height = 400;
-					
-				};
-			</script>
 		</div>
 	</div>
 	<%@include file="../layout/footer.jsp"%>

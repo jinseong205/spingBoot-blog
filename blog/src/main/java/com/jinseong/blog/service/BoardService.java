@@ -1,6 +1,7 @@
 package com.jinseong.blog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class BoardService {
 
 	@Autowired
 	private MemberRepository memberRepository;
+
+	@Value("${ck-editor.image-upload.path}")
+	private String imageUploadPath;
 
 	@Transactional
 	public void saveBoard(Board board, Member member) { // title, content
@@ -57,8 +61,9 @@ public class BoardService {
 		Board board = boardRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("글 삭제 실패 : 게시글 id를 찾을 수 없습니다");
 		});
-		
-		if(board.getMember().getId() != principal.getMember().getId() && principal.getMember().getRole() != RoleType.ADMIN) {
+
+		if (board.getMember().getId() != principal.getMember().getId()
+				&& principal.getMember().getRole() != RoleType.ADMIN) {
 			throw new Exception("글 삭제 실패 : 삭제 권한이 없습니다.");
 		}
 
@@ -67,16 +72,16 @@ public class BoardService {
 
 	@Transactional
 	public void updateBoard(int id, Board requestBoard, PrincipalDetail principal) throws Exception {
-		
-		
+
 		Board board = boardRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을수 었습니다.");
 		}); // 영속화 완료
-		
-		if(board.getMember().getId() != principal.getMember().getId() && principal.getMember().getRole() != RoleType.ADMIN) {
+
+		if (board.getMember().getId() != principal.getMember().getId()
+				&& principal.getMember().getRole() != RoleType.ADMIN) {
 			throw new Exception("글 수정 실패 : 수정 권한이 없습니다.");
 		}
-		
+
 		board.setTitle(requestBoard.getTitle());
 		board.setContent(requestBoard.getContent());
 		board.setCategory(requestBoard.getCategory());
@@ -124,11 +129,15 @@ public class BoardService {
 		Reply reply = replyRepository.findById(replyId).orElseThrow(() -> {
 			return new IllegalArgumentException("댓글 삭제 실패 : 댓글 id를 찾을 수 없습니다");
 		});
-		
-		if(reply.getMember().getId() != principal.getMember().getId() && principal.getMember().getRole() != RoleType.ADMIN) {
+
+		if (reply.getMember().getId() != principal.getMember().getId()
+				&& principal.getMember().getRole() != RoleType.ADMIN) {
 			throw new Exception("댓글 삭제 실패 : 삭제 권한이 없습니다.");
 		}
 
 		replyRepository.deleteById(replyId);
 	}
+
+
+
 }

@@ -22,13 +22,6 @@
 					<button id="btn-update" class="btn btn-primary">글수정 완료</button>
 				</div>
 
-				<script>
-					window.onload = function() {
-						ck = CKEDITOR.replace('content');
-						CKEDITOR.config.height = 400;
-
-					};
-				</script>
 			</div>
 		</div>
 	</div>

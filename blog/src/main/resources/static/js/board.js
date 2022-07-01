@@ -1,6 +1,10 @@
 
 let index = {
 	init: function() {
+		ck = CKEDITOR.replace('content',{
+			filebrowserUploadUrl: '/board/ckUpload'
+		});
+		CKEDITOR.config.height = 400;
 
 
 		$("#btn-save").on("click", () => { // this 바인딩
@@ -27,7 +31,7 @@ let index = {
 			content: CKEDITOR.instances.content.getData(),
 			category: $("#category").val(),
 		}
-		
+
 		$.ajax({
 			type: "POST",
 			url: "/api/board",

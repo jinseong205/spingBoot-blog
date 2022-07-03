@@ -194,10 +194,6 @@ public class BoardService {
 			json.put("url", fileUrl);
 			printWriter.println(json);
 
-			// System.out.println("test url : " +
-			// req.getSession().getServletContext().getRealPath("resouces/ckUpload"));
-			// System.out.println("url : " + fileUrl);
-			// System.out.println("ckUploadPath : " + ckUploadPath);
 
 			printWriter.flush();
 		} catch (IOException e) {

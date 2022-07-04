@@ -17,6 +17,6 @@ public class ToyController {
 
 	@GetMapping("/toy/webGame")
 	public String webGame(Model model) {
-		return "toy/webGame";	//viewResolver 작동!
+		return "toy/webGame/main";	//viewResolver 작동!
 	}
 }

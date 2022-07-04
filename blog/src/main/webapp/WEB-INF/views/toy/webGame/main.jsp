@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@include file="../layout/header.jsp"%>
+<%@include file="../../layout/header.jsp"%>
 
 
 <body class="">
 	<div class="d-flex" id="wrapper">
-		<%@include file="../layout/toySideBar.jsp"%>
+		<%@include file="../../layout/toySideBar.jsp"%>
 		<div id="page-content-wrapper">
-			<%@include file="../layout/nav.jsp"%>
+			<%@include file="../../layout/nav.jsp"%>
 
 			<div id="content" class="container-fluid ">
 				<br /> 
@@ -23,7 +23,7 @@
 					<p class="d-flex justify-content-center">Resource - 『유니티5 교과서』</p>
 				</div>
 			</div>
-			<%@include file="../layout/footer.jsp"%>
+			<%@include file="../../layout/footer.jsp"%>
 		</div>
 		<script src="/js/toy/webGame.js"></script>
 	</div>

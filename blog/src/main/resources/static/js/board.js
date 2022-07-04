@@ -1,11 +1,13 @@
 
 let index = {
 	init: function() {
-		ck = CKEDITOR.replace('ckEditor',{
-			filebrowserUploadUrl: '/board/ckUpload'
-		});
-		CKEDITOR.config.height = 400;
 
+		if ($("#ckEditor").length > 0) {
+			ck = CKEDITOR.replace('ckEditor', {
+				filebrowserUploadUrl: '/board/ckUpload'
+			});
+			CKEDITOR.config.height = 400;
+		}
 
 		$("#btn-save").on("click", () => { // this 바인딩
 			this.save();
@@ -28,7 +30,7 @@ let index = {
 	save: function() {
 		let data = {
 			title: $("#title").val(),
-			content: CKEDITOR.instances.content.getData(),
+			content: CKEDITOR.instances.ckEditor.getData(),
 			category: $("#category").val(),
 		}
 
@@ -81,7 +83,7 @@ let index = {
 
 		let data = {
 			title: $("#title").val(),
-			content: CKEDITOR.instances.content.getData(),
+			content: CKEDITOR.instances.ckEditor.getData(),
 		}
 		$.ajax({
 			type: "PUT",

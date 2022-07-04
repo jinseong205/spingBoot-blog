@@ -12,11 +12,16 @@ public class ToyController {
 	
 	@GetMapping("/toy")
 	public String toyMain(Model model) {
-		return webGame(model);	//viewResolver 작동!
+		return riotApi(model);	//viewResolver 작동!
 	}
 
 	@GetMapping("/toy/webGame")
 	public String webGame(Model model) {
 		return "toy/webGame/main";	//viewResolver 작동!
+	}
+	
+	@GetMapping("toy/riot-api")
+	public String riotApi(Model model) {
+		return "toy/riot-api/main";
 	}
 }

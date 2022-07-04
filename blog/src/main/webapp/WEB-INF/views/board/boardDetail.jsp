@@ -9,13 +9,16 @@
 			<%@include file="../layout/nav.jsp"%>
 
 			<div id="content" class="container-fluid ">
-				<div class="m-5">
-					<div class="clearfix container-fluid">
-						<div class="float-left">
-							<button class="btn btn-primary" id="sidebarToggle"><></button>
-						</div>
+				<br/>
+				<div class="clearfix container-fluid">
+					<div class="float-left">
+						<button class="btn btn-primary" id="sidebarToggle"><></button>
 					</div>
-					</br>
+				</div>
+				<br/>
+				
+				<div class="mr-5 ml-5 mb-5">
+
 					<div>
 						글번호: <span id="id">${board.id}</span> 작성자: <span><i>${board.member.username} </i></span>
 					</div>
@@ -77,9 +80,9 @@
 					</div>
 					<%@include file="../layout/footer.jsp"%>
 				</div>
-
 			</div>
 		</div>
+	</div>
 	</div>
 	<script src="/js/board.js"></script>
 </body>

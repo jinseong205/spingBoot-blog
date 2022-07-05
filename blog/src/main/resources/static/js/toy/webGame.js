@@ -18,7 +18,6 @@ var rightPressed = false;
 var leftPressed = false;
 
 
-var img = document.getElementById("nave");
 var myPlayer = new Image();
 myPlayer.src = "/image/webGame/player.png";
 

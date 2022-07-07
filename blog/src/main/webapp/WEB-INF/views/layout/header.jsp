@@ -13,23 +13,15 @@
 <title>Jinseong</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- bootStrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- jQuery & bootstrap -->
+<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+<!-- ck Editor -->
 <script src="/js/ckeditor/ckeditor.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
-<!-- summernote -->
-<!-- 
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
- -->
+<!--  custom -->
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/webGame.css">
-
 <script src="/js/main.js"></script>
-
 </head>

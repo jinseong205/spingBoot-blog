@@ -15,13 +15,23 @@ public class ToyController {
 		return riotApi(model);	//viewResolver 작동!
 	}
 
+	@GetMapping("toy/riot-api")
+	public String riotApi(Model model) {
+		return "toy/riot-api/main";
+	}
+	
 	@GetMapping("/toy/webGame")
 	public String webGame(Model model) {
 		return "toy/webGame/main";	//viewResolver 작동!
 	}
 	
-	@GetMapping("toy/riot-api")
-	public String riotApi(Model model) {
-		return "toy/riot-api/main";
+	@GetMapping("toy/smartContract")
+	public String smartContract(Model model) {
+		return "toy/smartContract/main";
+	}
+	
+	@GetMapping("toy/webSocketChatting")
+	public String webSocketChatting(Model model) {
+		return "toy/webSocketChatting/main";
 	}
 }

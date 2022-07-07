@@ -11,18 +11,23 @@
 
 			<div id="content" class="container-fluid ">
 				<br />
-				<div class="clearfix container-fluid">
+				<div class=" clearfix container-fluid">
 					<div class="float-left">
 						<button class="btn btn-primary" id="sidebarToggle"><></button>
 					</div>
 				</div>
+				<br />
 				<div class="ml-5 mr-5 mb-5">
-					<div class="align-items-center">
-						<div class="form-group">
-							<div class="form-group">
-								<label for="username"></label> <input type="text" class="form-control" placeholder="소환사명을 입력하세요" id="username">
+					<div>
+						<div class="card-body row no-gutters align-items-center">
+							<div class="col">
+								<input id="username" class="form-control form-control-lg form-control-borderless" type="search" placeholder="소환사명을 입력하세요" >
+							</div>
+							<div class="col-auto">
+								<button id="btn-search" class="btn btn-lg btn-primary" >&nbsp검색&nbsp</button>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>

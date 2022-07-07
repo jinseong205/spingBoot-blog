@@ -23,8 +23,6 @@ let index = {
 		$("#btn-reply-save").on("click", () => {
 			this.replySaveDto();
 		});
-
-
 	},
 
 	save: function() {

@@ -31,7 +31,7 @@ public class RiotApiController {
 	@Autowired
 	private RiotApiService riotApiService;
 	
-	@GetMapping("/api/riot-api/summoner/{username}")
+	@GetMapping("/api/riot-api/{username}")
 	private String riotInfo(@PathVariable String username) throws Exception {
 		
 		RestTemplate rt = new RestTemplate();

@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- jQuery & bootstrap -->
-<script src="/js/jquery-3.2.1.slim.min.js"></script>
+<script src="/js/jquery-3.5.1.js"></script>
 <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="/js/bootstrap/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">

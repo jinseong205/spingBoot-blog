@@ -1,4 +1,4 @@
-package com.jinseong.blog.controller;
+package com.jinseong.blog.controller.common;
 
 import java.io.File;
 import java.io.FileOutputStream;

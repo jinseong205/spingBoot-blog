@@ -1,4 +1,4 @@
-package com.jinseong.blog.controller;
+package com.jinseong.blog.controller.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

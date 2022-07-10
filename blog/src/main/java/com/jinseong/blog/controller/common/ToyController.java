@@ -1,4 +1,4 @@
-package com.jinseong.blog.controller;
+package com.jinseong.blog.controller.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,6 @@ public class ToyController {
 	public String riotApi(@RequestParam(required=false) String username, Model model) throws Exception {
 		if (username != null && !username.trim().equals("")) {
 			String riotInfo = riotApiService.riotInfo(username);
-			System.out.println(riotInfo);
 			model.addAttribute("riotInfo", riotInfo);
 		}
 		return "toy/riot-api/main";

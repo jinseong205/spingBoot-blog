@@ -1,4 +1,4 @@
-package com.jinseong.blog.controller;
+package com.jinseong.blog.controller.common;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;

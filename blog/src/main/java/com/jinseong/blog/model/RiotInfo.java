@@ -23,13 +23,16 @@ public class RiotInfo {
 	private String losses;
 	
 
-	private List<JSONObject> match;
-		
+	private List<JSONObject> matchs;
+
+
 	@Override
 	public String toString() {
 		return "RiotInfo [id=" + id + ", puuid=" + puuid + ", name=" + name + ", summonerLevel=" + summonerLevel
-				+ ", tier=" + tier + ", rank=" + rank + ", wins=" + wins + ", losses=" + losses + "]";
+				+ ", tier=" + tier + ", rank=" + rank + ", leaguePoints=" + leaguePoints + ", wins=" + wins
+				+ ", losses=" + losses + ", matchs=" + matchs + "]";
 	}
+		
 
 
 

@@ -1,26 +1,28 @@
 package com.jinseong.blog.service;
 
+
 import java.io.UnsupportedEncodingException;
 
 import org.apache.http.impl.client.HttpClients;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.jinseong.blog.model.RiotInfo;
 
 @Service
 public class RiotApiService {
-
+	
+	
+	
 	@Value("${riot.api.key}")
 	private String riotKey;
 
@@ -36,12 +38,15 @@ public class RiotApiService {
 	@Value("${riot.api.match-by-MatchId-url}")
 	private String matchByMatchIdurl;
 
+    
 	public String riotInfo(String username) throws Exception {
 
-		ClientHttpRequestFactory requestFactory = new     
-			      HttpComponentsClientHttpRequestFactory(HttpClients.createDefault());		
+		WebClient client = WebClient.create();	
 		
+		ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
+				HttpClients.createDefault());
 		RestTemplate rt = new RestTemplate(requestFactory);
+
 		HttpHeaders reqHeaders;
 		MultiValueMap<String, String> reqBody;
 
@@ -54,7 +59,7 @@ public class RiotApiService {
 				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36");
 		reqHeaders.add("Accept-Charset", "application/x-www-form-urlencoded; charset=UTF-8");
 		reqHeaders.add("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
-		
+		reqHeaders.add("Content-Encoding", "gzip");
 		reqHeaders.add("Origin", "https://developer.riotgames.com");
 		reqHeaders.add("X-Riot-Token", riotKey);
 
@@ -62,7 +67,6 @@ public class RiotApiService {
 
 		HttpEntity<MultiValueMap<String, String>> HttpEntity = new HttpEntity<>(reqBody, reqHeaders);
 
-		
 //		HttpEntity<MultiValueMap<String, String>> HttpEntity = new HttpEntity<>(reqBody, reqHeaders);
 
 		byte[] bytes;
@@ -72,16 +76,16 @@ public class RiotApiService {
 			throw new UnsupportedEncodingException("인코딩에 실패하였습니다." + e.getMessage());
 		}
 		String matchGame = new String(bytes);
-		
+
 		try {
 			System.out.println(matchGame);
-			ResponseEntity<String> a = rt.exchange("https://asia.api.riotgames.com/lol/match/v5/matches/" + matchGame,
+			 rt.exchange("https://asia.api.riotgames.com/lol/match/v5/matches/" + matchGame,
 					HttpMethod.GET, HttpEntity, String.class);
-			System.out.println(a.toString());
+			//System.out.println(a.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 //		/* Summoner */
 //
 //		// UTF-8 인코딩

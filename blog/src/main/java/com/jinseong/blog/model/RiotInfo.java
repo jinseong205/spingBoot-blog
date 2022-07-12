@@ -3,7 +3,7 @@ package com.jinseong.blog.model;
 
 import java.util.List;
 
-import org.json.JSONObject;
+import javax.persistence.OrderBy;
 
 import lombok.Data;
 
@@ -22,9 +22,9 @@ public class RiotInfo {
 	private String wins;
 	private String losses;
 	
-
-	private List<JSONObject> matchs;
-
+	//match
+	@OrderBy("gameStartTimestamp asc")
+	private List<RiotMatch> matchs;
 
 	@Override
 	public String toString() {
@@ -32,8 +32,5 @@ public class RiotInfo {
 				+ ", tier=" + tier + ", rank=" + rank + ", leaguePoints=" + leaguePoints + ", wins=" + wins
 				+ ", losses=" + losses + ", matchs=" + matchs + "]";
 	}
-		
-
-
 
 }

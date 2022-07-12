@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jinseong.blog.model.RiotInfo;
 import com.jinseong.blog.service.RiotApiService;
 
 @Controller
@@ -21,8 +22,14 @@ public class ToyController {
 
 	@GetMapping("toy/riot-api")
 	public String riotApi(@RequestParam(required=false) String username, Model model) throws Exception {
+		
 		if (username != null && !username.trim().equals("")) {
-			String riotInfo = riotApiService.riotInfo(username);
+			RiotInfo riotInfo = null;
+			try {
+				riotInfo = riotApiService.riotInfo(username);
+			}catch(Exception e){
+				riotInfo = riotApiService.riotInfoDummy();
+			}
 			model.addAttribute("riotInfo", riotInfo);
 		}
 		return "toy/riot-api/main";

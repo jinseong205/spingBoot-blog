@@ -78,10 +78,12 @@ let index = {
 
 	update: function() {
 		let id = $("#id").val();
+		
 
 		let data = {
 			title: $("#title").val(),
 			content: CKEDITOR.instances.ckEditor.getData(),
+			category: $("#category").val(),
 		}
 		$.ajax({
 			type: "PUT",

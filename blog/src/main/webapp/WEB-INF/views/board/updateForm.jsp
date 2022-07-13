@@ -10,6 +10,15 @@
 			<div class="container">
 				<div id="page-content-wrapper">
 					<br /> <br />
+					<div class="form-group">
+						Category: <select id="category" class="selectpicker">
+							<option value=0>Free Board</option>
+							<c:if test="${principal.member.role eq 'ADMIN'}">
+								<option value=1>Profile</option>
+								<option value=2>PortFolio</option>
+							</c:if>
+						</select>
+					</div>
 					<form>
 						<div class="form-group">
 							<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">

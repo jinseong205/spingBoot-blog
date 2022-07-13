@@ -21,17 +21,22 @@ public class ToyController {
 	}
 
 	@GetMapping("toy/riot-api")
-	public String riotApi(@RequestParam(required=false) String username, Model model) throws Exception {
-		
+	public String riotApi(@RequestParam(required = false) String username, Model model) throws Exception {
+
 		if (username != null && !username.trim().equals("")) {
 			RiotInfo riotInfo = null;
+
 			try {
 				riotInfo = riotApiService.riotInfo(username);
-			}catch(Exception e){
+			} catch (Exception e) {
+				e.printStackTrace();
 				riotInfo = riotApiService.riotInfoDummy();
+			} finally {
+				model.addAttribute("riotInfo", riotInfo);
 			}
-			model.addAttribute("riotInfo", riotInfo);
+
 		}
+
 		return "toy/riot-api/main";
 	}
 

@@ -4,7 +4,7 @@
 <div id="content" class="container-fluid ">
 	<div class="text-center container-fluid navbar-fixed-bottom" style="margin-bottom: 0; padding: 0 0 0 0]">
 		<div class = "container-fluid m-3">
-			Create By Jinseong<br /> 📞010-3589-0199<br />📧jinoseng205@gmail.com
+			Create By Jinseong<br /> 📞010-3589-0199<br />📧jinseong205@gmail.com
 		</div>
 	</div>
 </div>

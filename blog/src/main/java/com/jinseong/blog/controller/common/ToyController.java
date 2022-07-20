@@ -1,11 +1,13 @@
 package com.jinseong.blog.controller.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jinseong.blog.auth.PrincipalDetail;
 import com.jinseong.blog.model.RiotInfo;
 import com.jinseong.blog.service.RiotApiService;
 
@@ -25,7 +27,6 @@ public class ToyController {
 
 		if (username != null && !username.trim().equals("")) {
 			RiotInfo riotInfo = null;
-
 			try {
 				riotInfo = riotApiService.riotInfo(username);
 			} catch (Exception e) {
@@ -34,7 +35,6 @@ public class ToyController {
 			} finally {
 				model.addAttribute("riotInfo", riotInfo);
 			}
-
 		}
 
 		return "toy/riot-api/main";
@@ -42,16 +42,21 @@ public class ToyController {
 
 	@GetMapping("/toy/webGame")
 	public String webGame(Model model) {
-		return "toy/webGame/main"; // viewResolver 작동!
+		return "toy/webGame/main"; 
 	}
+	
 
+	@GetMapping("toy/webSocketChatting")
+	public String webSocketChatting(@AuthenticationPrincipal PrincipalDetail principal, Model model) {
+		
+		
+		return "toy/webSocketChatting/main";
+	}
+	
+	/*
 	@GetMapping("toy/smartContract")
 	public String smartContract(Model model) {
 		return "toy/smartContract/main";
 	}
-
-	@GetMapping("toy/webSocketChatting")
-	public String webSocketChatting(Model model) {
-		return "toy/webSocketChatting/main";
-	}
+	*/
 }

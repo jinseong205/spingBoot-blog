@@ -20,8 +20,7 @@
 				<br />
 				<div class="ml-5 mr-5 mb-3">
 					<h2>Riot-API</h2>
-					라이엇 API 를 이용하여 리그오브레전드 전적정보를 검색합니다.<br /> API Key가 만료 될 시 더미데이터를 이용합니다.
-					<br/>개발 일지 - <a href="https://gomawoomi.tistory.com/55">https://gomawoomi.tistory.com/55</a>
+					라이엇 API 를 이용하여 리그오브레전드 전적정보를 검색합니다.<br /> API Key가 만료 될 시 더미데이터를 이용합니다. <br />개발 일지 - <a href="https://gomawoomi.tistory.com/55">https://gomawoomi.tistory.com/55</a>
 				</div>
 				<div class="ml-5 mr-5 mb-5">
 					<div>
@@ -42,13 +41,13 @@
 								<h3>Lv ${riotInfo.summonerLevel} ${riotInfo.name}</h3>
 								<c:choose>
 									<c:when test="${!empty riotInfo.tier}">
-										<h5>${riotInfo.tier}&nbsp${riotInfo.rank} - ${riotInfo.leaguePoints}p</h5>
+										<h5>${riotInfo.tier}&nbsp${riotInfo.rank}- ${riotInfo.leaguePoints}p</h5>
 									</c:when>
 									<c:otherwise>
 										<h5>Unranked</h5>
 									</c:otherwise>
 								</c:choose>
-								<br/>
+								<br />
 								<h5>[최근 5 경기]</h5>
 								<c:choose>
 									<c:when test="${!empty riotInfo.matchs}">
@@ -68,17 +67,11 @@
 										<h5>최근 경기가 없습니다.</h5>
 									</c:otherwise>
 								</c:choose>
-
-
-
-
-
 							</div>
 						</c:if>
 					</div>
 				</div>
 			</div>
-			<%@include file="../../layout/footer.jsp"%>
 		</div>
 		<script src="/js/toy/riot-api.js"></script>
 	</div>

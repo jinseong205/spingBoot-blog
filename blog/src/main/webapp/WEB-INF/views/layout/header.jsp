@@ -22,6 +22,7 @@
 <script src="/js/ckeditor/ckeditor.js"></script>
 <!--  custom -->
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/webGame.css">
+<link rel="stylesheet" href="/css/toy/webGame.css">
+<link rel="stylesheet" href="/css/toy/webSocketChatting.css">
 <script src="/js/main.js"></script>
 </head>

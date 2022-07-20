@@ -9,7 +9,7 @@ import com.jinseong.blog.dto.ResponseDto;
 
 @ControllerAdvice
 @RestController
-public class GlobalExceptionHanddler {
+public class GlobalExceptionHandler {
 	@ExceptionHandler(value=Exception.class)
 	public ResponseDto<String> hadnleArgumentException(Exception e) {
 		return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());

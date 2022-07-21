@@ -2,6 +2,12 @@
  * 
  */
 
+let index = {
+	init: function() {
+		wsOpen();
+	}
+}
+
 var ws;
 
 function wsOpen() {
@@ -17,7 +23,7 @@ function wsEvt() {
 	ws.onmessage = function(data) {
 		var msg = data.data;
 		if (msg != null && msg.trim() != '') {
-			$("#chatting").append("<p>" + msg + "</p>");
+			$("#chattingSpace").append("<p>" + msg + "</p>");
 		}
 	}
 
@@ -29,23 +35,15 @@ function wsEvt() {
 
 }
 
-function setChatName() {
-	var chatName = $("#chatName").val();
-	if (chatName == null || chatName.trim() == '') {
-		alert("사용자 이름을 입력해주세요.");
-		$("#chatName").focus();
-	} else {
-		wsOpen();
-		$("#chatNameDiv").hide();
-		$("#chatMsgDiv").show().css('position','relative');
-		$("#chatMsg").css('display','block');
-	}
-}
-
 function sendChat() {
 	var chatName = $("#chatName").val();
 	var msg = $("#chatMsg").val();
 	ws.send("[" + chatName + "] " + msg);
 	$('#chatMsg').val("");
+	$("#chattingSpace").scrollTop($("#chattingSpace")[0].scrollHeight);
+	
 }
+
+
+index.init();
 

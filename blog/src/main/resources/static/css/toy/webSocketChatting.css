@@ -1,15 +1,12 @@
 @charset "UTF-8";
 .chattingSpace{
-	height:500px;
+	height:400px;
 	border: 1px solid rgba(0, 0, 0, 0.125);
+	overflow-y: scroll;
 }
 
 .chattingSpace p{
 	text-align: left;
 	margin : 0;
-}
-
-#chatMsgDiv{
-	display: none;
 }
 

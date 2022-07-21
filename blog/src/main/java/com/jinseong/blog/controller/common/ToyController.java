@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.jinseong.blog.auth.PrincipalDetail;
 import com.jinseong.blog.model.RiotInfo;
 import com.jinseong.blog.service.RiotApiService;
+import com.jinseong.blog.service.WebSocketChattingService;
 
 @Controller
 public class ToyController {
 
 	@Autowired
 	private RiotApiService riotApiService;
+	
+	@Autowired
+	private WebSocketChattingService webSocketChattingService;
 
 	@GetMapping("/toy")
-	public String toyMain(Model model) throws Exception {
-		return riotApi(null, model); // viewResolver 작동!
+	public String toyMain( Model model) throws Exception {
+		return webSocketChatting(model); // viewResolver 작동!
 	}
 
 	@GetMapping("toy/riot-api")
@@ -47,9 +51,10 @@ public class ToyController {
 	
 
 	@GetMapping("toy/webSocketChatting")
-	public String webSocketChatting(@AuthenticationPrincipal PrincipalDetail principal, Model model) {
+	public String webSocketChatting(Model model) {
 		
-		
+		String chatName = webSocketChattingService.getChatName();
+		model.addAttribute("chatName",chatName);
 		return "toy/webSocketChatting/main";
 	}
 	

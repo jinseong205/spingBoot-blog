@@ -20,7 +20,7 @@
 				<br />
 				<div class="ml-5 mr-5 mb-3">
 					<h2>WebSocket 채팅</h2>
-					웹소켓을 이용하여 간단한 채팅방을 구현하였습니다. <br />메세지 내용은 별도로 저장되지 않습니다. <br />개발 일지 - <a href="https://gomawoomi.tistory.com/56">https://gomawoomi.tistory.com/56</a>
+					웹소켓을 이용하여 간단한 채팅방을 구현하였습니다. <br />메세지 내용은 별도로 저장되지 않습니다. <br />개발 일지 - <a href="https://gomawoomi.tistory.com/56">https://gomawoomi.tistory.com/59</a>
 				</div>
 				<div class="ml-5 mr-5 mb-5">
 					<div id="chattingSpace" class="chattingSpace p-3">

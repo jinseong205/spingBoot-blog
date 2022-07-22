@@ -52,7 +52,6 @@ public class ToyController {
 
 	@GetMapping("toy/webSocketChatting")
 	public String webSocketChatting(Model model) {
-		
 		String chatName = webSocketChattingService.getChatName();
 		model.addAttribute("chatName",chatName);
 		return "toy/webSocketChatting/main";

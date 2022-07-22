@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 let index = {
 	init: function() {
 		wsOpen();

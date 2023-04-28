@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private PrincipalDetailService principalDetailService;
 	
-	@Bean
+	@Bean	//Bean으로 등록시 해당 메서드로 리턴되는 object를 IoC으로 등록해준다.
 	public BCryptPasswordEncoder encodePWD() {
 		return new BCryptPasswordEncoder();
 	}

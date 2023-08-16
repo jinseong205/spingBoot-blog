@@ -19,3 +19,5 @@ blog/src/main/webapp/upload/board/ff8caa80-fb81-4d46-a2e0-3bcddc49664f_정진성
 *.yml
 blog/src/main/resources/application-prod.yml
 blog/src/main/resources/application-dev.yml
+blog/src/main/resources/application-prod.yml
+blog/src/main/resources/application-dev.yml

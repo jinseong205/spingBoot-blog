@@ -26,7 +26,7 @@
  기본 회원가입/로그인 이외에 카카오 oAuth를 이용하여 회원가입/로그인을 진행하고 있습니다.
  Spring Security를 이용하여 Server측으로 오는 요청을 관리 및 권한에 따른 기능을 제한 하고 있습니다.
 
-**JPA/QueryDSL**
+**JPA**
 
  ORM을 이용하여 Entity와 Database Table을 매핑하고 있습니다.
  JpaRepository 인터페이스에서 Named Query와 NativeQuery를 사용하여 쿼리를 생성하였습니다.
